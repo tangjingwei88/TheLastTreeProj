@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class ColliderItem : MonoBehaviour {
 
-    void OnCollisionEnter2D(Collision2D coll)
+    void OnCollisionStay2D(Collision2D coll)
     {
         if (coll.transform.tag == "bottom")
         {
@@ -18,7 +18,9 @@ public class ColliderItem : MonoBehaviour {
             //Debug.LogError("collPos" + collPos);
 
             Vector3 direct = collPos - treePos;
-            this.gameObject.transform.GetComponent<Rigidbody2D>().AddForce(new Vector2(-transform.localPosition.x *1, -transform.localPosition.y * 1));
+            //this.gameObject.transform.GetComponent<Rigidbody2D>().AddForce(new Vector2(-transform.localPosition.x *10, -transform.localPosition.y * 10));
+            this.gameObject.transform.GetComponent<Rigidbody2D>().AddForce(new Vector2(direct.x*10,direct.y*10));
+
         }
     }
 }

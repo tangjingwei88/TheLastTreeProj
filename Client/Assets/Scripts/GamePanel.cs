@@ -26,11 +26,11 @@ public class GamePanel : MonoBehaviour {
     {
         protectBtn.transform.localPosition = new Vector3(tree.gameObject.transform.localPosition.x,tree.gameObject.transform.localPosition.y + 200,0);
         List<string> templateList = new List<string>();
-        templateList.Add("LineTemplate");
+        //templateList.Add("LineTemplate");
         templateList.Add("LineTemplate-wang");
-        templateList.Add("LineTemplate-zhong");
+        //templateList.Add("LineTemplate-zhong");
         templateList.Add("SquadeTemplate-s");
-        templateList.Add("TwoSideTemplate");
+        //templateList.Add("TwoSideTemplate");
 
         Apply(templateList);
     }
