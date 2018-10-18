@@ -24,13 +24,12 @@ public class GamePanel : MonoBehaviour {
 
     public void Init()
     {
-        Debug.LogError(protectBtn.transform.localPosition);
-        Debug.LogError(tree.gameObject.transform.localPosition.x);
-        Debug.LogError(tree.gameObject.transform.localPosition.y);
         protectBtn.transform.localPosition = new Vector3(tree.gameObject.transform.localPosition.x,tree.gameObject.transform.localPosition.y + 200,0);
         List<string> templateList = new List<string>();
         templateList.Add("LineTemplate");
-        templateList.Add("SquadeTemplate");
+        templateList.Add("LineTemplate-wang");
+        templateList.Add("LineTemplate-zhong");
+        templateList.Add("SquadeTemplate-s");
         templateList.Add("TwoSideTemplate");
 
         Apply(templateList);
@@ -67,7 +66,7 @@ public class GamePanel : MonoBehaviour {
             item.transform.parent = beginPos.transform;
             item.transform.localPosition = beginPos.transform.localPosition;
             item.transform.localScale = Vector3.one;
-            if (i == 2) i = 0;
+            if (i == templateList.Count -1) i = 0;
             yield return new WaitForSeconds(5);
         }
     }
