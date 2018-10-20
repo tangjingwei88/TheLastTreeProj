@@ -10,27 +10,45 @@ public class GamePanel : MonoBehaviour {
     public GameObject tree;
 
     public GameObject beginPos;  //物体生成位置
-    public List<GameObject> colliderList;
 
-    private static GamePanel instance = new GamePanel();
+    int num = 0;
+
+    private static GamePanel instance;
     public static GamePanel Instance {
         get { return instance; }
     }
 
     void Awake()
     {
+        instance = this;
         Init();
     }
 
     public void Init()
     {
-        protectBtn.transform.localPosition = new Vector3(tree.gameObject.transform.localPosition.x,tree.gameObject.transform.localPosition.y + 200,0);
+        protectBtn.transform.localPosition = new Vector3(0,-150,0);
+        CreatePubbleItem();
         List<string> templateList = new List<string>();
-        //templateList.Add("LineTemplate");
-        templateList.Add("LineTemplate-wang");
-        //templateList.Add("LineTemplate-zhong");
-        templateList.Add("SquadeTemplate-s");
-        //templateList.Add("TwoSideTemplate");
+        templateList.Add("SquadGroupTemplate");
+        templateList.Add("AntGroupTemplate");
+        templateList.Add("LuDengTemplate");
+        templateList.Add("buppleGroupTemplate");
+        templateList.Add("AnimDog3Template");
+        templateList.Add("AnimDog4Template");
+        templateList.Add("AnimDogTemplate");
+        templateList.Add("LuDengTemplate");
+        templateList.Add("AntTemplate");
+        templateList.Add("buppleTemplate");
+        templateList.Add("SquadTemplate1");
+        templateList.Add("SquadTemplate2");
+        templateList.Add("SquadTemplate3");
+        templateList.Add("LuDengTemplate");
+        templateList.Add("SquadTemplate4");
+        templateList.Add("SquadTemplate5");
+        templateList.Add("SquadTemplate6");
+        templateList.Add("LuDengTemplate");
+        templateList.Add("SquadTemplate7");
+        templateList.Add("SquadTemplate2");
 
         Apply(templateList);
     }
@@ -55,31 +73,121 @@ public class GamePanel : MonoBehaviour {
 
     IEnumerator CreateColliderItem(List<string> templateList)
     {
+        int timer = 0;
+        
         for (int i = 0; i < templateList.Count; i++)
         {
-            Debug.LogError(GameDefine.UIPrefabPath);
-            Object obj = Resources.Load(GameDefine.UIPrefabPath + templateList[i]);
+            num++;
+            timer++;
+            Object obj;
+            if (timer % 5 == 0)
+            {
+                CreateBoom();
+            }
+
+            obj = Resources.Load(GameDefine.ItemPrefabPath + templateList[i]);
+          //  Debug.LogError(GameDefine.ItemPrefabPath + templateList[i]);
             GameObject item = Instantiate((GameObject)obj);
-            colliderList.Add(item);
+
+            if (item.name.Contains("Group"))
+            {
+                foreach (Transform child in item.transform)
+                {
+                    num++;
+                    //                    Debug.LogError("##" + child.name);
+                    child.gameObject.name += num;
+                    GameData.Instance.colliderList.Add(child.gameObject);
+                }
+                GameData.Instance.colliderList.Add(item);
+            }
+            else
+            {
+                item.name += num;
+                GameData.Instance.colliderList.Add(item);
+            }
 
             item.SetActive(true);
             item.transform.parent = beginPos.transform;
             item.transform.localPosition = beginPos.transform.localPosition;
             item.transform.localScale = Vector3.one;
             if (i == templateList.Count -1) i = 0;
+
+
             yield return new WaitForSeconds(5);
         }
     }
 
+    //生成气球
+    public void CreatePubbleItem()
+    {
+        num++;
+        Object obj;
+        obj = Resources.Load(GameDefine.UIPrefabPath + "PubbleItem");
+
+        GameObject item = Instantiate((GameObject)obj);
+        item.name += num;
+        item.SetActive(true);
+        item.transform.parent = protectBtn.transform.parent;
+        item.transform.localPosition = new Vector3(protectBtn.GetComponent<RectTransform>().localPosition.x, protectBtn.GetComponent<RectTransform>().localPosition.y -200, 0);
+        item.transform.localScale = Vector3.one;
+    }
+
+    //生成炸弹
+    public void CreateBoom()
+    {
+        num++;
+        Object obj;
+        obj = Resources.Load(GameDefine.ItemPrefabPath + "BoomTemplate");
+
+        GameObject item = Instantiate((GameObject)obj);
+        item.name += num;
+        GameData.Instance.colliderList.Add(item);
+
+        item.SetActive(true);
+        item.transform.parent = beginPos.transform;
+        item.transform.localPosition = beginPos.transform.localPosition;
+        item.transform.localScale = Vector3.one;
+    }
+
     public void Clear()
     {
-        if (colliderList != null)
+        if (GameData.Instance.colliderList != null)
         {
-            for (int i = 0; i < colliderList.Count; i++)
+            for (int i = 0; i < GameData.Instance.colliderList.Count; i++)
             {
-                Destroy(colliderList[i].gameObject);
+                Destroy(GameData.Instance.colliderList[i].gameObject);
             }
-            colliderList.Clear();
+            GameData.Instance.colliderList.Clear();
         }
+    }
+
+    public void BoomClear()
+    {
+        if (GameData.Instance.colliderList != null)
+        {
+           StartCoroutine(ItemBoomClear());
+           // GameData.Instance.colliderList.Clear();
+        }
+    }
+
+
+    IEnumerator ItemBoomClear()
+    {
+        for (int i = 0; i < GameData.Instance.colliderList.Count; i++)
+        {
+            if (GameData.Instance.colliderList[i] != null && 
+                !GameData.Instance.colliderList[i].gameObject.name.Contains("Group")
+                && GameData.Instance.colliderList[i].gameObject.tag != "boom")
+            {
+                GameData.Instance.colliderList[i].transform.Find("Image").gameObject.SetActive(false);
+                Debug.LogError("##"+ GameData.Instance.colliderList[i].name);
+                GameData.Instance.colliderList[i].transform.Find("CollideImg").gameObject.SetActive(false);
+                GameData.Instance.colliderList[i].transform.Find("BoomImg").gameObject.SetActive(true);
+                yield return new WaitForSeconds(0.02f);
+                Destroy(GameData.Instance.colliderList[i]);
+            }
+        }
+        
+        Clear();
     }
 }

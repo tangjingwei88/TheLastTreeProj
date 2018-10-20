@@ -5,7 +5,7 @@ using UnityEngine;
 public class GameDefine : MonoBehaviour {
 
     public const string UIPrefabPath = "UIPrefab/";
-
+    public const string ItemPrefabPath = "UIPrefab/ItemPrefab/";
 
     private static GameDefine instance;
     public static GameDefine Instance {

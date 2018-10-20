@@ -6,7 +6,7 @@ public class ColliderItem : MonoBehaviour {
 
     void OnCollisionStay2D(Collision2D coll)
     {
-        if (coll.transform.tag == "bottom")
+        if (coll.transform.tag == "topDestory")
         {
             Destroy(this.gameObject);
         }
@@ -15,12 +15,11 @@ public class ColliderItem : MonoBehaviour {
         {
             Vector3 treePos = new Vector3(0,-510,0);
             Vector3 collPos = coll.gameObject.GetComponent<RectTransform>().localPosition;
-            //Debug.LogError("collPos" + collPos);
 
             Vector3 direct = collPos - treePos;
-            //this.gameObject.transform.GetComponent<Rigidbody2D>().AddForce(new Vector2(-transform.localPosition.x *10, -transform.localPosition.y * 10));
-            this.gameObject.transform.GetComponent<Rigidbody2D>().AddForce(new Vector2(direct.x*10,direct.y*10));
-
+            transform.GetComponent<Rigidbody2D>().AddForce(new Vector2(direct.x*10,direct.y*10));
+            Debug.LogError("@@" + transform.gameObject.name);
+            transform.Find("CollideImg").gameObject.SetActive(true);
         }
     }
 }

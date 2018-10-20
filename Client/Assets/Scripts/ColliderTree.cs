@@ -9,7 +9,19 @@ public class ColliderTree : MonoBehaviour {
         if (coll.transform.tag == "enemy")
         {
             GameData.Instance.isLost = true;
+            StartCoroutine(DestroySelf());
+
             //GamePanel.Instance.theGameOverPanel.Apply();
         }
+    }
+
+    IEnumerator DestroySelf()
+    {
+        transform.gameObject.SetActive(false);
+        GameObject boom = transform.Find("BoomImage").gameObject;
+        boom.SetActive(true);
+        yield return new WaitForSeconds(1);
+        boom.SetActive(false);
+        
     }
 }
