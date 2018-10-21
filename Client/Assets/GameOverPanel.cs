@@ -14,6 +14,7 @@ public class GameOverPanel : MonoBehaviour {
     public void OkBtnClick()
     {
         this.gameObject.SetActive(false);
+        StopAllCoroutines();
         GamePanel.Instance.Init();
     }
 }

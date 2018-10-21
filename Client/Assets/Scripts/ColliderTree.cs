@@ -9,19 +9,20 @@ public class ColliderTree : MonoBehaviour {
         if (coll.transform.tag == "enemy")
         {
             GameData.Instance.isLost = true;
-            StartCoroutine(DestroySelf());
+            StopAllCoroutines();
+            StartCoroutine(DestroyTree());
 
-            //GamePanel.Instance.theGameOverPanel.Apply();
         }
     }
 
-    IEnumerator DestroySelf()
+    IEnumerator DestroyTree()
     {
-        transform.gameObject.SetActive(false);
+        this.gameObject.transform.Find("Image").gameObject.SetActive(false);
         GameObject boom = transform.Find("BoomImage").gameObject;
         boom.SetActive(true);
-        yield return new WaitForSeconds(1);
+        yield return new WaitForSeconds(0.2f);
         boom.SetActive(false);
+        Destroy(this.gameObject);
         
     }
 }

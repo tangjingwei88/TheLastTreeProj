@@ -29,27 +29,26 @@ public class GamePanel : MonoBehaviour {
         protectBtn.transform.localPosition = new Vector3(0,-150,0);
         CreatePubbleItem();
         List<string> templateList = new List<string>();
+        templateList.Add("CarTemplate");
+        templateList.Add("JingGuBangTemplate");
         templateList.Add("SquadGroupTemplate");
         templateList.Add("AntGroupTemplate");
         templateList.Add("LuDengTemplate");
         templateList.Add("buppleGroupTemplate");
         templateList.Add("AnimDog3Template");
+        templateList.Add("JingGuBangTemplate");
         templateList.Add("AnimDog4Template");
+        templateList.Add("CarTemplate");
         templateList.Add("AnimDogTemplate");
+        templateList.Add("AntGroupTemplate");
         templateList.Add("LuDengTemplate");
+        templateList.Add("CarTemplate");
+        templateList.Add("JingGuBangTemplate");
         templateList.Add("AntTemplate");
-        templateList.Add("buppleTemplate");
-        templateList.Add("SquadTemplate1");
-        templateList.Add("SquadTemplate2");
-        templateList.Add("SquadTemplate3");
-        templateList.Add("LuDengTemplate");
-        templateList.Add("SquadTemplate4");
-        templateList.Add("SquadTemplate5");
-        templateList.Add("SquadTemplate6");
-        templateList.Add("LuDengTemplate");
-        templateList.Add("SquadTemplate7");
-        templateList.Add("SquadTemplate2");
-
+        templateList.Add("buppleGroupTemplate");
+        templateList.Add("CarTemplate");
+        templateList.Add("CarTemplate");
+        templateList.Add("SquadGroupTemplate");
         Apply(templateList);
     }
 
@@ -67,6 +66,7 @@ public class GamePanel : MonoBehaviour {
 
     public void Apply(List<string> templateList)
     {
+        StopAllCoroutines();
         StartCoroutine(CreateColliderItem(templateList));
     }
 
@@ -74,13 +74,13 @@ public class GamePanel : MonoBehaviour {
     IEnumerator CreateColliderItem(List<string> templateList)
     {
         int timer = 0;
-        
+        num = 0;
         for (int i = 0; i < templateList.Count; i++)
         {
             num++;
             timer++;
             Object obj;
-            if (timer % 5 == 0)
+            if (timer % 10 == 0)
             {
                 CreateBoom();
             }
@@ -88,6 +88,10 @@ public class GamePanel : MonoBehaviour {
             obj = Resources.Load(GameDefine.ItemPrefabPath + templateList[i]);
           //  Debug.LogError(GameDefine.ItemPrefabPath + templateList[i]);
             GameObject item = Instantiate((GameObject)obj);
+            item.SetActive(true);
+            item.transform.parent = beginPos.transform;
+            item.transform.localPosition = beginPos.transform.localPosition;
+            item.transform.localScale = Vector3.one;
 
             if (item.name.Contains("Group"))
             {
@@ -106,10 +110,7 @@ public class GamePanel : MonoBehaviour {
                 GameData.Instance.colliderList.Add(item);
             }
 
-            item.SetActive(true);
-            item.transform.parent = beginPos.transform;
-            item.transform.localPosition = beginPos.transform.localPosition;
-            item.transform.localScale = Vector3.one;
+
             if (i == templateList.Count -1) i = 0;
 
 
@@ -177,7 +178,7 @@ public class GamePanel : MonoBehaviour {
         {
             if (GameData.Instance.colliderList[i] != null && 
                 !GameData.Instance.colliderList[i].gameObject.name.Contains("Group")
-                && GameData.Instance.colliderList[i].gameObject.tag != "boom")
+                )
             {
                 GameData.Instance.colliderList[i].transform.Find("Image").gameObject.SetActive(false);
                 Debug.LogError("##"+ GameData.Instance.colliderList[i].name);
