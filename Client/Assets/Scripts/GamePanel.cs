@@ -76,46 +76,40 @@ public class GamePanel : MonoBehaviour {
     {
         int timer = 0;
         num = 0;
-        for (int i = 0; i < templateList.Count; i++)
+        for (int stage = 1; stage <= 4; stage++)
         {
-            num++;
-            timer++;
-            Object obj;
-            if (timer % 10 == 0)
+            StageConfigManager.StageConfig cf = StageConfigManager.GetStageConfig(stage);
+            for (int i = 0; i < cf.ItemTemplateList.Count; i++)
             {
-                CreateBoom();
-            }
+                num++;
+                timer++;
+                Object obj;
+                obj = Resources.Load(GameDefine.ItemPrefabPath + cf.ItemTemplateList[i]);
+                //  Debug.LogError(GameDefine.ItemPrefabPath + templateList[i]);
+                GameObject item = Instantiate((GameObject)obj);
+                item.SetActive(true);
+                item.transform.parent = beginPos.transform;
+                item.transform.localPosition = beginPos.transform.localPosition;
+                item.transform.localScale = Vector3.one;
 
-            obj = Resources.Load(GameDefine.ItemPrefabPath + templateList[i]);
-          //  Debug.LogError(GameDefine.ItemPrefabPath + templateList[i]);
-            GameObject item = Instantiate((GameObject)obj);
-            item.SetActive(true);
-            item.transform.parent = beginPos.transform;
-            item.transform.localPosition = beginPos.transform.localPosition;
-            item.transform.localScale = Vector3.one;
-
-            if (item.name.Contains("Group"))
-            {
-                foreach (Transform child in item.transform)
+                if (item.name.Contains("Group"))
                 {
-                    num++;
-                    //                    Debug.LogError("##" + child.name);
-                    child.gameObject.name += num;
-                    GameData.Instance.colliderList.Add(child.gameObject);
+                    foreach (Transform child in item.transform)
+                    {
+                        num++;
+                        child.gameObject.name += num;
+                        GameData.Instance.colliderList.Add(child.gameObject);
+                    }
+                    GameData.Instance.colliderList.Add(item);
                 }
-                GameData.Instance.colliderList.Add(item);
+                else
+                {
+                    item.name += num;
+                    GameData.Instance.colliderList.Add(item);
+                }
+
+                yield return new WaitForSeconds(5);
             }
-            else
-            {
-                item.name += num;
-                GameData.Instance.colliderList.Add(item);
-            }
-
-
-            if (i == templateList.Count -1) i = 0;
-
-
-            yield return new WaitForSeconds(5);
         }
     }
 
