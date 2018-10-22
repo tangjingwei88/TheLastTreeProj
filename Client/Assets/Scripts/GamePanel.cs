@@ -21,6 +21,7 @@ public class GamePanel : MonoBehaviour {
     void Awake()
     {
         instance = this;
+        StageConfigManager.Init();
         Init();
     }
 
