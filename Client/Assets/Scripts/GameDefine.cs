@@ -6,6 +6,7 @@ public class GameDefine : MonoBehaviour {
 
     public const string UIPrefabPath = "UIPrefab/";
     public const string ItemPrefabPath = "UIPrefab/ItemPrefab/";
+    public const string ProtoPath = "Config/ClientProto/";
 
     private static GameDefine instance;
     public static GameDefine Instance {

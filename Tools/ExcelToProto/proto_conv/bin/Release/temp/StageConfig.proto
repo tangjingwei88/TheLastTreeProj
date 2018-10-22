@@ -1,0 +1,6 @@
+message StageConfig
+{
+	required int32 RankID = 1;
+	required string Name = 2;
+	required string TemplateList = 3;
+}

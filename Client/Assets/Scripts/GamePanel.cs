@@ -60,6 +60,7 @@ public class GamePanel : MonoBehaviour {
             theGameOverPanel.Apply();
             Clear();
             GameData.Instance.isLost = false;
+            StopAllCoroutines();
         }
     }
 
