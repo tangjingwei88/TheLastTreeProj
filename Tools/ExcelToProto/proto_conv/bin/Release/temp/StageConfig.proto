@@ -2,5 +2,10 @@ message StageConfig
 {
 	required int32 RankID = 1;
 	required string Name = 2;
-	required string TemplateList = 3;
+	required float ProtectPower = 3;
+	required float ProtectRotateSpeed = 4;
+	required float ProtectRotateInnerSpeed = 5;
+	required float JGBRotateSpeed = 6;
+	required float JGBPower = 7;
+	required string TemplateList = 8;
 }

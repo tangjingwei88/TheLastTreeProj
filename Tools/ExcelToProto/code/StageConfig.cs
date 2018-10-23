@@ -29,8 +29,43 @@ namespace m
       get { return _Name; }
       set { _Name = value; }
     }
+    private float _ProtectPower;
+    [global::ProtoBuf.ProtoMember(3, IsRequired = true, Name=@"ProtectPower", DataFormat = global::ProtoBuf.DataFormat.FixedSize)]
+    public float ProtectPower
+    {
+      get { return _ProtectPower; }
+      set { _ProtectPower = value; }
+    }
+    private float _ProtectRotateSpeed;
+    [global::ProtoBuf.ProtoMember(4, IsRequired = true, Name=@"ProtectRotateSpeed", DataFormat = global::ProtoBuf.DataFormat.FixedSize)]
+    public float ProtectRotateSpeed
+    {
+      get { return _ProtectRotateSpeed; }
+      set { _ProtectRotateSpeed = value; }
+    }
+    private float _ProtectRotateInnerSpeed;
+    [global::ProtoBuf.ProtoMember(5, IsRequired = true, Name=@"ProtectRotateInnerSpeed", DataFormat = global::ProtoBuf.DataFormat.FixedSize)]
+    public float ProtectRotateInnerSpeed
+    {
+      get { return _ProtectRotateInnerSpeed; }
+      set { _ProtectRotateInnerSpeed = value; }
+    }
+    private float _JGBRotateSpeed;
+    [global::ProtoBuf.ProtoMember(6, IsRequired = true, Name=@"JGBRotateSpeed", DataFormat = global::ProtoBuf.DataFormat.FixedSize)]
+    public float JGBRotateSpeed
+    {
+      get { return _JGBRotateSpeed; }
+      set { _JGBRotateSpeed = value; }
+    }
+    private float _JGBPower;
+    [global::ProtoBuf.ProtoMember(7, IsRequired = true, Name=@"JGBPower", DataFormat = global::ProtoBuf.DataFormat.FixedSize)]
+    public float JGBPower
+    {
+      get { return _JGBPower; }
+      set { _JGBPower = value; }
+    }
     private string _TemplateList;
-    [global::ProtoBuf.ProtoMember(3, IsRequired = true, Name=@"TemplateList", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    [global::ProtoBuf.ProtoMember(8, IsRequired = true, Name=@"TemplateList", DataFormat = global::ProtoBuf.DataFormat.Default)]
     public string TemplateList
     {
       get { return _TemplateList; }

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class GameOverPanel : MonoBehaviour {
 
-    public void Apply()
+    public void Apply(float timer)
     {
         this.gameObject.SetActive(true);
         StopAllCoroutines();

@@ -9,6 +9,7 @@ public class protectInnerRotate : MonoBehaviour {
     // Update is called once per frame
     void Update()
     {
-        this.transform.Rotate(new Vector3(0, 0, -speed), 3);
+        //this.transform.Rotate(new Vector3(0, 0, -speed), 3);
+        this.transform.Rotate(new Vector3(0, 0, -GameData.Instance.protectRotateInnerSpeed), GameData.Instance.protectRotateInnerSpeed);
     }
 }

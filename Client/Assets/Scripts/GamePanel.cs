@@ -12,6 +12,7 @@ public class GamePanel : MonoBehaviour {
     public GameObject beginPos;  //物体生成位置
 
     int num = 0;
+    float timer = 0;
 
     private static GamePanel instance;
     public static GamePanel Instance {
@@ -58,7 +59,7 @@ public class GamePanel : MonoBehaviour {
     {
         if (GameData.Instance.isLost)
         {
-            theGameOverPanel.Apply();
+            theGameOverPanel.Apply(timer);
             Clear();
             GameData.Instance.isLost = false;
             StopAllCoroutines();
@@ -75,15 +76,21 @@ public class GamePanel : MonoBehaviour {
 
     IEnumerator CreateColliderItem(List<string> templateList)
     {
-        int timer = 0;
+        timer += Time.deltaTime;
         num = 0;
         for (int stage = 1; stage <= 4; stage++)
         {
             StageConfigManager.StageConfig cf = StageConfigManager.GetStageConfig(stage);
+
+            GameData.Instance.protectPower = cf.ProtectPower;
+            GameData.Instance.protectRotateSpeed = cf.ProtectRotateSpeed;
+            GameData.Instance.protectRotateInnerSpeed = cf.ProtectRotateInnerSpeed;
+            GameData.Instance.JGBRotateSpeed = cf.JGBRotateSpeed;
+            GameData.Instance.JGBPower = cf.JGBPower;
+
             for (int i = 0; i < cf.ItemTemplateList.Count; i++)
             {
                 num++;
-                timer++;
                 Object obj;
                 obj = Resources.Load(GameDefine.ItemPrefabPath + cf.ItemTemplateList[i]);
                 //  Debug.LogError(GameDefine.ItemPrefabPath + templateList[i]);

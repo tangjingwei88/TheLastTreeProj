@@ -8,6 +8,11 @@ public class StageConfigManager : ProtoBase {
     {
         public int ID;
         public string Name;
+        public float ProtectPower;
+        public float ProtectRotateSpeed;  //外圈旋转速度
+        public float ProtectRotateInnerSpeed; //内圈旋转速度
+        public float JGBRotateSpeed;
+        public float JGBPower;
 
 
         public Dictionary<int, int> ResultDic = new Dictionary<int, int>();                     //存储结果
@@ -24,6 +29,12 @@ public class StageConfigManager : ProtoBase {
         {
             ID = s.RankID;
             Name = s.Name;
+            ProtectRotateSpeed = s.ProtectRotateSpeed;
+            ProtectRotateInnerSpeed = s.ProtectRotateInnerSpeed;
+            JGBRotateSpeed = s.JGBRotateSpeed;
+            ProtectPower = s.ProtectPower;
+            JGBPower = s.JGBPower;
+
 
             string[] str2List = s.TemplateList.Split(';');
             for (int i = 0; i < str2List.Length; i++)

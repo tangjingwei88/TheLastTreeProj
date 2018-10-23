@@ -19,8 +19,10 @@ public class ColliderItem : MonoBehaviour {
             Vector3 collPos = coll.gameObject.GetComponent<RectTransform>().localPosition;
 
             Vector3 direct = collPos - treePos;
-            transform.GetComponent<Rigidbody2D>().AddForce(new Vector2(direct.x*10,direct.y*10));
-//            Debug.LogError("@@" + transform.gameObject.name);
+            //transform.GetComponent<Rigidbody2D>().AddForce(new Vector2(direct.x*10,direct.y*10));
+            transform.GetComponent<Rigidbody2D>().AddForce(new Vector2(direct.x * GameData.Instance.protectPower, direct.y * GameData.Instance.protectPower));
+
+            //            Debug.LogError("@@" + transform.gameObject.name);
             transform.Find("CollideImg").gameObject.SetActive(true);
         }
 
@@ -32,7 +34,7 @@ public class ColliderItem : MonoBehaviour {
             Vector3 collPos = coll.gameObject.GetComponent<RectTransform>().localPosition;
 
             Vector3 direct = collPos - treePos;
-            transform.GetComponent<Rigidbody2D>().AddForce(new Vector2(direct.x * 10, -direct.y * 5));
+            transform.GetComponent<Rigidbody2D>().AddForce(new Vector2(direct.x * GameData.Instance.JGBPower, -direct.y * GameData.Instance.JGBPower));
         }
     }
 }
