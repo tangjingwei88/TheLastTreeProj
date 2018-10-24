@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class GamePanel : MonoBehaviour {
 
@@ -8,6 +9,7 @@ public class GamePanel : MonoBehaviour {
 
     public GameObject protectBtn;
     public GameObject tree;
+    public Text stageLabel;
 
     public GameObject beginPos;  //物体生成位置
 
@@ -78,10 +80,11 @@ public class GamePanel : MonoBehaviour {
     {
         timer += Time.deltaTime;
         num = 0;
-        for (int stage = 1; stage <= 4; stage++)
+        for (int stage = 1; stage <= StageConfigManager.stageConfigList.Count; stage++)
         {
             StageConfigManager.StageConfig cf = StageConfigManager.GetStageConfig(stage);
 
+            stageLabel.text = cf.ID.ToString();
             GameData.Instance.protectPower = cf.ProtectPower;
             GameData.Instance.protectRotateSpeed = cf.ProtectRotateSpeed;
             GameData.Instance.protectRotateInnerSpeed = cf.ProtectRotateInnerSpeed;
