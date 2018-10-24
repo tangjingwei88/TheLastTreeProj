@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class ColliderItem : MonoBehaviour {
 
+    private AudioSource audio;
     void OnCollisionStay2D(Collision2D coll)
     {
         if (coll.transform.tag == "topDestory")
@@ -13,6 +14,8 @@ public class ColliderItem : MonoBehaviour {
         //碰撞有穿透问题，目前引擎没有方法解决，给碰撞体添加相反的力模拟碰撞
         else if (coll.transform.tag == "protect")
         {
+          //  AudioClip collideClip = (AudioClip)Resources.Load(GameDefine.AudioPath + "colliderSound");
+          //  AudioSource.PlayClipAtPoint(collideClip,transform.position);
             //根据tag找到气球，获取位置
             GameObject tree = GameObject.FindGameObjectWithTag("tree");
             Vector3 treePos = tree.transform.localPosition;

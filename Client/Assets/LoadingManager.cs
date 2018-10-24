@@ -20,4 +20,6 @@ public class LoadingManager : MonoBehaviour {
     {
         StageConfigManager.Init();
     }
+
+
 }

@@ -186,6 +186,8 @@ public class GamePanel : MonoBehaviour {
                 !GameData.Instance.colliderList[i].gameObject.name.Contains("Group")
                 )
             {
+            //    AudioClip collideClip = (AudioClip)Resources.Load(GameDefine.AudioPath + "boom");
+            //    AudioSource.PlayClipAtPoint(collideClip, transform.position);
                 GameData.Instance.colliderList[i].transform.Find("Image").gameObject.SetActive(false);
                 Debug.LogError("##"+ GameData.Instance.colliderList[i].name);
                 GameData.Instance.colliderList[i].transform.Find("CollideImg").gameObject.SetActive(false);
