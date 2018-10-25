@@ -10,9 +10,11 @@ public class GamePanel : MonoBehaviour {
     public GameObject protectBtn;
     public GameObject tree;
     public Text stageLabel;
+    
 
     public GameObject beginPos;  //物体生成位置
-
+    public GameObject stageLabelPos; //关卡名称生成位置
+    private GameObject LabelObj;
     int num = 0;
     float timer = 0;
 
@@ -83,13 +85,29 @@ public class GamePanel : MonoBehaviour {
         for (int stage = 1; stage <= StageConfigManager.stageConfigList.Count; stage++)
         {
             StageConfigManager.StageConfig cf = StageConfigManager.GetStageConfig(stage);
-
+            
+            if (LabelObj != null)
+                Destroy(LabelObj);
+            Object stageLabelObj;
+            stageLabelObj = Resources.Load(GameDefine.UIPrefabPath + "stageLabel");
+            LabelObj = Instantiate((GameObject)stageLabelObj);
+            LabelObj.SetActive(true);
+            LabelObj.transform.parent = beginPos.transform;
+            LabelObj.transform.localPosition = stageLabelPos.transform.localPosition;
+            LabelObj.transform.localScale = Vector3.one;
+            LabelObj.GetComponent<Text>().text = cf.ID.ToString();
             stageLabel.text = cf.ID.ToString();
+
+
+
             GameData.Instance.protectPower = cf.ProtectPower;
             GameData.Instance.protectRotateSpeed = cf.ProtectRotateSpeed;
             GameData.Instance.protectRotateInnerSpeed = cf.ProtectRotateInnerSpeed;
             GameData.Instance.JGBRotateSpeed = cf.JGBRotateSpeed;
             GameData.Instance.JGBPower = cf.JGBPower;
+
+            //MoveToTop();
+           // ScaleToSmall();
 
             for (int i = 0; i < cf.ItemTemplateList.Count; i++)
             {
@@ -123,6 +141,11 @@ public class GamePanel : MonoBehaviour {
             }
         }
     }
+
+    public void ScaleToBig(){ }
+    public void MoveToCenter(){ }
+    public void ScaleToSmall() { }
+    public void MoveToTop() { }
 
     //生成气球
     public void CreatePubbleItem()
