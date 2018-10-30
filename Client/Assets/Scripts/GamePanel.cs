@@ -106,8 +106,8 @@ public class GamePanel : MonoBehaviour {
             GameData.Instance.JGBRotateSpeed = cf.JGBRotateSpeed;
             GameData.Instance.JGBPower = cf.JGBPower;
 
-            //MoveToTop();
-           // ScaleToSmall();
+            yield return new WaitForSeconds(1);
+            Destroy(LabelObj);
 
             for (int i = 0; i < cf.ItemTemplateList.Count; i++)
             {
@@ -138,6 +138,7 @@ public class GamePanel : MonoBehaviour {
                 }
 
                 yield return new WaitForSeconds(5);
+                
             }
         }
     }

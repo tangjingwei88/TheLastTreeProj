@@ -75,6 +75,7 @@ GameObject:
   - component: {fileID: 61869980699265428}
   - component: {fileID: 114009264208404144}
   - component: {fileID: 114528504779432560}
+  - component: {fileID: 114158682167120868}
   m_Layer: 5
   m_Name: JingGuBangTemplate
   m_TagString: enemy
@@ -219,13 +220,24 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
---- !u!114 &114528504779432560
+--- !u!114 &114158682167120868
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1910521004851368}
   m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 16e9406084e5b34438b2db4171bdc552, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &114528504779432560
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1910521004851368}
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 77e3c202aa41d3a4dbb6fd17e3f10443, type: 3}
   m_Name: 
