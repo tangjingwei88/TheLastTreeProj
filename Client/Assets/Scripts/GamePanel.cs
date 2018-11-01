@@ -184,92 +184,43 @@ public class GamePanel : MonoBehaviour {
     }
 
 
-    public void LeftTopMove(float dis){ StartCoroutine(StartLeftTopMove(dis)); }
-    IEnumerator StartLeftTopMove(float dis)
+    public void LeftTopMove(float dis)
     {
-        Vector3 curPos = leftTopMoveStock.transform.localPosition;
-        Vector3 endPos = new Vector3(leftTopMoveStock.transform.localPosition.x+ dis, leftTopMoveStock.transform.localPosition.y, leftTopMoveStock.transform.localPosition.z);
-        leftTopMoveStock.transform.localPosition = Vector3.Lerp(curPos,endPos,0.5f);
-        yield return new WaitForSeconds(3);
-        leftTopMoveStock.transform.localPosition = Vector3.Lerp(endPos, curPos, 0.5f);
+
     }
 
 
-    public void LeftMidMove(float dis) { StartCoroutine(StartLeftMidMove(dis)); }
-    private IEnumerator StartLeftMidMove(float dis)
-    {
-        Vector3 curPos = leftMidMoveStock.transform.localPosition;
-        Vector3 endPos = new Vector3(leftMidMoveStock.transform.localPosition.x + dis, leftMidMoveStock.transform.localPosition.y, leftMidMoveStock.transform.localPosition.z);
-        leftMidMoveStock.transform.localPosition = Vector3.Lerp(curPos, endPos, 0.5f);
-        yield return new WaitForSeconds(3);
-        leftMidMoveStock.transform.localPosition = Vector3.Lerp(endPos, curPos, 0.5f);
+
+    public void LeftMidMove(float dis) {
+
+        leftMidMoveStock.GetComponent<Animation>().Play();
+
     }
 
 
-    public void LeftBottomMove(float dis) { StartCoroutine(StartLeftBottomMove(dis)); }
-    private IEnumerator StartLeftBottomMove(float dis)
-    {
-        Vector3 curPos = leftBottomMoveStock.transform.localPosition;
-        Vector3 endPos = new Vector3(leftBottomMoveStock.transform.localPosition.x + dis, leftBottomMoveStock.transform.localPosition.y, leftBottomMoveStock.transform.localPosition.z);
-        leftBottomMoveStock.transform.localPosition = Vector3.Lerp(curPos, endPos, 0.5f);
-        yield return new WaitForSeconds(3);
-        leftBottomMoveStock.transform.localPosition = Vector3.Lerp(endPos, curPos, 0.5f);
-    }
+
+    public void LeftBottomMove(float dis) {  }
 
 
-    public void RightTopMove(float dis) { StartCoroutine(StartRightTopMove(dis)); }
-    private IEnumerator StartRightTopMove(float dis)
-    {
-        Vector3 curPos = rightTopMoveStock.transform.localPosition;
-        Vector3 endPos = new Vector3(rightTopMoveStock.transform.localPosition.x - dis, rightTopMoveStock.transform.localPosition.y, rightTopMoveStock.transform.localPosition.z);
-        rightTopMoveStock.transform.localPosition = Vector3.Lerp(curPos, endPos, 0.1f);
-        yield return new WaitForSeconds(3);
-        rightTopMoveStock.transform.localPosition = Vector3.Lerp(endPos, curPos, 0.1f);
-    }
+
+    public void RightTopMove(float dis) { }
 
 
-    public void RightMidMove(float dis) { StartCoroutine(StartRightMidMove(dis)); }
-    private IEnumerator StartRightMidMove(float dis)
-    {
-        Vector3 curPos = rightMidMoveStock.transform.localPosition;
-        Vector3 endPos = new Vector3(rightMidMoveStock.transform.localPosition.x - dis, rightMidMoveStock.transform.localPosition.y, rightMidMoveStock.transform.localPosition.z);
-        rightMidMoveStock.transform.localPosition = Vector3.Lerp(curPos, endPos, 0.1f);
-        yield return new WaitForSeconds(3);
-        rightMidMoveStock.transform.localPosition = Vector3.Lerp(endPos, curPos, 0.1f);
-    }
+
+    public void RightMidMove(float dis) { }
 
 
-    public void RightBottomMove(float dis) { StartCoroutine(StartRightBottomMove(dis)); }
-    private IEnumerator StartRightBottomMove(float dis)
-    {
-        Vector3 curPos = rightBottomMoveStock.transform.localPosition;
-        Vector3 endPos = new Vector3(rightBottomMoveStock.transform.localPosition.x - dis, rightBottomMoveStock.transform.localPosition.y, rightBottomMoveStock.transform.localPosition.z);
-        rightBottomMoveStock.transform.localPosition = Vector3.Lerp(curPos, endPos, 0.1f);
-        yield return new WaitForSeconds(3);
-        rightBottomMoveStock.transform.localPosition = Vector3.Lerp(endPos, curPos, 0.1f);
-    }
+
+    public void RightBottomMove(float dis) {  }
 
 
-    public void BottomLeftMove(float dis) { StartCoroutine(StartBottomLeftMove(dis)); }
-    private IEnumerator StartBottomLeftMove(float dis)
-    {
-        Vector3 curPos = bottomLeftMoveStock.transform.localPosition;
-        Vector3 endPos = new Vector3(bottomLeftMoveStock.transform.localPosition.x, bottomLeftMoveStock.transform.localPosition.y + dis, bottomLeftMoveStock.transform.localPosition.z);
-        bottomLeftMoveStock.transform.localPosition = Vector3.Lerp(curPos, endPos, 0.1f);
-        yield return new WaitForSeconds(3);
-        bottomLeftMoveStock.transform.localPosition = Vector3.Lerp(endPos, curPos, 0.1f);
-    }
+
+    public void BottomLeftMove(float dis) {  }
 
 
-    public void BottomRightMove(float dis) { StartCoroutine(StartBottomRightMove(dis)); }
-    private IEnumerator StartBottomRightMove(float dis)
-    {
-        Vector3 curPos = bottomRightMoveStock.transform.localPosition;
-        Vector3 endPos = new Vector3(bottomRightMoveStock.transform.localPosition.x, bottomRightMoveStock.transform.localPosition.y + dis, bottomRightMoveStock.transform.localPosition.z);
-        bottomRightMoveStock.transform.localPosition = Vector3.Lerp(curPos, endPos, 0.1f);
-        yield return new WaitForSeconds(3);
-        bottomRightMoveStock.transform.localPosition = Vector3.Lerp(endPos, curPos, 0.1f);
-    }
+
+    public void BottomRightMove(float dis) { }
+
 
     //生成气球
     public void CreatePubbleItem()
