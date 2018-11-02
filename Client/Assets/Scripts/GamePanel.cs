@@ -11,12 +11,17 @@ public class GamePanel : MonoBehaviour {
     public GameObject tree;
     public Text stageLabel;
 
+    public GameObject leftAllMoveStock;
     public GameObject leftTopMoveStock;
     public GameObject leftMidMoveStock;
     public GameObject leftBottomMoveStock;
+
+    public GameObject rightAllMoveStock;
     public GameObject rightTopMoveStock;
     public GameObject rightMidMoveStock;
     public GameObject rightBottomMoveStock;
+
+    public GameObject bottomAllMoveStock;
     public GameObject bottomLeftMoveStock;
     public GameObject bottomRightMoveStock;
 
@@ -186,40 +191,57 @@ public class GamePanel : MonoBehaviour {
 
     public void LeftTopMove(float dis)
     {
-
+        leftTopMoveStock.GetComponent<Animation>().Play("LeftTopMoveAnimation");
     }
 
 
 
-    public void LeftMidMove(float dis) {
-
-        leftMidMoveStock.GetComponent<Animation>().Play();
-
+    public void LeftMidMove(float dis)
+    {
+        leftMidMoveStock.GetComponent<Animation>().Play("LeftMidMoveAnimation");
     }
 
 
 
-    public void LeftBottomMove(float dis) {  }
+    public void LeftBottomMove(float dis)
+    {
+        leftBottomMoveStock.GetComponent<Animation>().Play("LeftBottomMoveAnimation");
+    }
 
 
 
-    public void RightTopMove(float dis) { }
+    public void RightTopMove(float dis)
+    {
+        rightTopMoveStock.GetComponent<Animation>().Play("RightTopMoveAnimation");
+    }
 
 
 
-    public void RightMidMove(float dis) { }
+    public void RightMidMove(float dis)
+    {
+        rightMidMoveStock.GetComponent<Animation>().Play("RightMidMoveAnimation");
+    }
 
 
 
-    public void RightBottomMove(float dis) {  }
+    public void RightBottomMove(float dis)
+    {
+        rightBottomMoveStock.GetComponent<Animation>().Play("RightBottomMoveAnimation");
+    }
 
 
 
-    public void BottomLeftMove(float dis) {  }
+    public void BottomLeftMove(float dis)
+    {
+        bottomLeftMoveStock.GetComponent<Animation>().Play("BottomLeftMoveAnimation");
+    }
 
 
 
-    public void BottomRightMove(float dis) { }
+    public void BottomRightMove(float dis)
+    {
+        bottomRightMoveStock.GetComponent<Animation>().Play("BottomRightMoveAnimation");
+    }
 
 
     //生成气球

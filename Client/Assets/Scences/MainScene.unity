@@ -483,7 +483,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &219075134
 RectTransform:
   m_ObjectHideFlags: 0
@@ -4894,10 +4894,12 @@ Animation:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 874515098}
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 3
-  m_Animation: {fileID: 7400000, guid: 1ea80c11b1a0cd94282b100e1a310ca8, type: 2}
-  m_Animations: []
+  m_Animation: {fileID: 7400000, guid: 5469dd2972140f54fb08031716d45976, type: 2}
+  m_Animations:
+  - {fileID: 7400000, guid: 5469dd2972140f54fb08031716d45976, type: 2}
+  - {fileID: 7400000, guid: 1ea80c11b1a0cd94282b100e1a310ca8, type: 2}
   m_WrapMode: 0
   m_PlayAutomatically: 0
   m_AnimatePhysics: 0
@@ -4909,7 +4911,7 @@ Animator:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 874515098}
-  m_Enabled: 0
+  m_Enabled: 1
   m_Avatar: {fileID: 0}
   m_Controller: {fileID: 9100000, guid: 16e5541fd8605554fa07662fa9763de6, type: 2}
   m_CullingMode: 0
@@ -5269,12 +5271,15 @@ MonoBehaviour:
   protectBtn: {fileID: 126418681}
   tree: {fileID: 0}
   stageLabel: {fileID: 1465875328}
+  leftAllMoveStock: {fileID: 0}
   leftTopMoveStock: {fileID: 1939890883}
   leftMidMoveStock: {fileID: 874515098}
   leftBottomMoveStock: {fileID: 1469597614}
+  rightAllMoveStock: {fileID: 0}
   rightTopMoveStock: {fileID: 0}
   rightMidMoveStock: {fileID: 0}
   rightBottomMoveStock: {fileID: 0}
+  bottomAllMoveStock: {fileID: 0}
   bottomLeftMoveStock: {fileID: 0}
   bottomRightMoveStock: {fileID: 0}
   beginPos: {fileID: 1331644843}
@@ -6808,7 +6813,8 @@ Animation:
   m_Enabled: 1
   serializedVersion: 3
   m_Animation: {fileID: 7400000, guid: 1ea80c11b1a0cd94282b100e1a310ca8, type: 2}
-  m_Animations: []
+  m_Animations:
+  - {fileID: 7400000, guid: 1ea80c11b1a0cd94282b100e1a310ca8, type: 2}
   m_WrapMode: 0
   m_PlayAutomatically: 0
   m_AnimatePhysics: 0
