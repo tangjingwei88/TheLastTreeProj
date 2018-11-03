@@ -17,17 +17,7 @@ public class BorderCollider : MonoBehaviour {
             collision.gameObject.transform.GetComponent<Rigidbody2D>().AddForce(new Vector2(direct.x * GameData.Instance.protectPower/3, direct.y * GameData.Instance.protectPower/3));
 
         }
-        if (collision.transform.tag == "tree" || collision.transform.tag == "protect")
-        {
-            collidePos = collision.transform.localPosition;
-        }
+
     }
 
-    void OnCollisionExit2D(Collision2D collision)
-    {
-        if (collision.transform.tag == "tree" || collision.transform.tag == "protect")
-        {
-            collision.transform.localPosition = collidePos;
-        }
-    }
 }

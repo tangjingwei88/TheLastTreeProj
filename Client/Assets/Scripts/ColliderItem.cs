@@ -53,7 +53,7 @@ public class ColliderItem : MonoBehaviour {
         obj.transform.Find("Image").gameObject.SetActive(false);
         obj.transform.Find("CollideImg").gameObject.SetActive(false);
         obj.transform.Find("BoomImg").gameObject.SetActive(true);
-        yield return new WaitForSeconds(1);
+        yield return new WaitForSeconds(0.1f);
         Destroy(obj);
     }
 }

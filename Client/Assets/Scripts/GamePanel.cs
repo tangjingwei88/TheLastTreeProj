@@ -5,11 +5,26 @@ using UnityEngine.UI;
 
 public class GamePanel : MonoBehaviour {
 
+    #region 引用
     public GameOverPanel theGameOverPanel;
 
     public GameObject protectBtn;
     public GameObject tree;
     public Text stageLabel;
+
+    public Transform LeftTopPos;
+    public Transform LeftMidPos;
+    public Transform LeftBottomPos;
+    public Transform LeftAllPos;
+
+    public Transform rightTopPos;
+    public Transform rightMidPos;
+    public Transform rightBottomPos;
+    public Transform rightAllPos;
+
+    public Transform bottomLeftPos;
+    public Transform bottomRightPos;
+    public Transform bottomAllPos;
 
     public GameObject leftAllMoveStock;
     public GameObject leftTopMoveStock;
@@ -28,13 +43,22 @@ public class GamePanel : MonoBehaviour {
     public GameObject beginPos;  //物体生成位置
     public GameObject stageLabelPos; //关卡名称生成位置
     private GameObject LabelObj;
+
+    #endregion
+
+    #region 变量
     int num = 0;
     float timer = 0;
 
+    #endregion
+
+    #region 单例
     private static GamePanel instance;
     public static GamePanel Instance {
         get { return instance; }
     }
+
+    #endregion
 
     void Awake()
     {
@@ -97,6 +121,7 @@ public class GamePanel : MonoBehaviour {
         num = 0;
         for (int stage = 1; stage <= StageConfigManager.stageConfigList.Count; stage++)
         {
+            StopAllAnimation();
             StageConfigManager.StageConfig cf = StageConfigManager.GetStageConfig(stage);
             
             if (LabelObj != null)
@@ -134,6 +159,10 @@ public class GamePanel : MonoBehaviour {
                 {
                     LeftBottomMove(200);
                 }
+                else if (cf.ItemTemplateList[i] == "LeftAllMove")
+                {
+                    LeftAllMove(200);
+                }
                 else if (cf.ItemTemplateList[i] == "RightTopMove")
                 {
                     RightTopMove(200);
@@ -146,6 +175,10 @@ public class GamePanel : MonoBehaviour {
                 {
                     RightBottomMove(200);
                 }
+                else if (cf.ItemTemplateList[i] == "RightAllMove")
+                {
+                    RightAllMove(200);
+                }
                 else if (cf.ItemTemplateList[i] == "BottomLeftMove")
                 {
                     BottomLeftMove(200);
@@ -153,6 +186,10 @@ public class GamePanel : MonoBehaviour {
                 else if (cf.ItemTemplateList[i] == "BottomRightMove")
                 {
                     BottomRightMove(200);
+                }
+                else if (cf.ItemTemplateList[i] == "BottomAllMove")
+                {
+                    BottomAllMove(200);
                 }
                 else {
                     num++;
@@ -189,11 +226,20 @@ public class GamePanel : MonoBehaviour {
     }
 
 
+    #region 播放四周动画
+
     public void LeftTopMove(float dis)
     {
         leftTopMoveStock.GetComponent<Animation>().Play("LeftTopMoveAnimation");
     }
 
+
+    public void StopLeftTopMove()
+    {
+        if (leftTopMoveStock.GetComponent<Animation>() != null)
+            leftTopMoveStock.GetComponent<Animation>().Stop();
+            leftTopMoveStock.transform.localPosition = LeftTopPos.localPosition;
+    }
 
 
     public void LeftMidMove(float dis)
@@ -201,6 +247,25 @@ public class GamePanel : MonoBehaviour {
         leftMidMoveStock.GetComponent<Animation>().Play("LeftMidMoveAnimation");
     }
 
+    public void StopLeftMidMove()
+    {
+        if (leftMidMoveStock.GetComponent<Animation>() != null)
+            leftMidMoveStock.GetComponent<Animation>().Stop();
+            leftMidMoveStock.transform.localPosition = LeftMidPos.localPosition;
+    }
+
+
+    public void LeftAllMove(float dis)
+    {
+        leftAllMoveStock.GetComponent<Animation>().Play("LeftAllMoveAnimation");
+    }
+
+    public void StopLeftAllMove()
+    {
+        if (leftAllMoveStock.GetComponent<Animation>() != null)
+            leftAllMoveStock.GetComponent<Animation>().Stop();
+        leftAllMoveStock.transform.localPosition = LeftAllPos.localPosition;
+    }
 
 
     public void LeftBottomMove(float dis)
@@ -208,13 +273,24 @@ public class GamePanel : MonoBehaviour {
         leftBottomMoveStock.GetComponent<Animation>().Play("LeftBottomMoveAnimation");
     }
 
-
+    public void StopLeftBottomMove()
+    {
+        if(leftBottomMoveStock.GetComponent<Animation>() != null)
+            leftBottomMoveStock.GetComponent<Animation>().Stop();
+            leftBottomMoveStock.transform.localPosition = LeftBottomPos.localPosition;
+    }
 
     public void RightTopMove(float dis)
     {
         rightTopMoveStock.GetComponent<Animation>().Play("RightTopMoveAnimation");
     }
 
+    public void StopRightTopMove()
+    {
+        if (rightTopMoveStock.GetComponent<Animation>() != null)
+            rightTopMoveStock.GetComponent<Animation>().Stop();
+            rightTopMoveStock.transform.localPosition = rightTopPos.localPosition;
+    }
 
 
     public void RightMidMove(float dis)
@@ -222,6 +298,12 @@ public class GamePanel : MonoBehaviour {
         rightMidMoveStock.GetComponent<Animation>().Play("RightMidMoveAnimation");
     }
 
+    public void StopRightMidMove()
+    {
+        if (rightMidMoveStock.GetComponent<Animation>() != null)
+            rightMidMoveStock.GetComponent<Animation>().Stop();
+            rightMidMoveStock.transform.localPosition = rightMidPos.localPosition;
+    }
 
 
     public void RightBottomMove(float dis)
@@ -229,19 +311,62 @@ public class GamePanel : MonoBehaviour {
         rightBottomMoveStock.GetComponent<Animation>().Play("RightBottomMoveAnimation");
     }
 
+    public void StopRightBottomMove()
+    {
+        if (rightBottomMoveStock.GetComponent<Animation>() != null)
+            rightBottomMoveStock.GetComponent<Animation>().Stop();
+            rightBottomMoveStock.transform.localPosition = rightBottomPos.localPosition;
+    }
 
+    public void RightAllMove(float dis)
+    {
+        rightAllMoveStock.GetComponent<Animation>().Play("RightAllMoveAnimation");
+    }
+
+    public void StopAllRightMove()
+    {
+        if (rightAllMoveStock.GetComponent<Animation>() != null)
+            rightAllMoveStock.GetComponent<Animation>().Stop();
+        rightAllMoveStock.transform.localPosition = rightAllPos.localPosition;
+    }
 
     public void BottomLeftMove(float dis)
     {
         bottomLeftMoveStock.GetComponent<Animation>().Play("BottomLeftMoveAnimation");
     }
 
-
+    public void StopBottomLeftMove()
+    {
+        if (bottomLeftMoveStock.GetComponent<Animation>() != null)
+            bottomLeftMoveStock.GetComponent<Animation>().Stop();
+            bottomLeftMoveStock.transform.localPosition = bottomLeftPos.localPosition;
+    }
 
     public void BottomRightMove(float dis)
     {
         bottomRightMoveStock.GetComponent<Animation>().Play("BottomRightMoveAnimation");
     }
+
+    public void StopBottomRightMove()
+    {
+        if (bottomRightMoveStock.GetComponent<Animation>() != null)
+            bottomRightMoveStock.GetComponent<Animation>().Stop();
+            bottomRightMoveStock.transform.localPosition = bottomRightPos.localPosition;
+    }
+
+    public void BottomAllMove(float dis)
+    {
+        bottomAllMoveStock.GetComponent<Animation>().Play("BottomAllMoveAnimation");
+    }
+
+    public void StopAllBottomMove()
+    {
+        if (bottomAllMoveStock.GetComponent<Animation>() != null)
+            bottomAllMoveStock.GetComponent<Animation>().Stop();
+        bottomAllMoveStock.transform.localPosition = bottomAllPos.localPosition;
+    }
+
+    #endregion
 
 
     //生成气球
@@ -318,5 +443,21 @@ public class GamePanel : MonoBehaviour {
         }
         
         Clear();
+    }
+
+
+    public void StopAllAnimation()
+    {
+        StopBottomLeftMove();
+        StopBottomRightMove();
+        StopAllBottomMove();
+        StopLeftBottomMove();
+        StopLeftMidMove();
+        StopLeftTopMove();
+        StopLeftAllMove();
+        StopRightBottomMove();
+        StopRightMidMove();
+        StopRightTopMove();
+        StopAllRightMove();
     }
 }

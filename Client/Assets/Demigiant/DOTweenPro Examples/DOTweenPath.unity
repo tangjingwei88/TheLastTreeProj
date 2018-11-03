@@ -184,7 +184,6 @@ MonoBehaviour:
   hasOnStepComplete: 0
   hasOnComplete: 1
   hasOnTweenCreated: 0
-  hasOnRewind: 0
   onStart:
     m_PersistentCalls:
       m_Calls: []
@@ -222,11 +221,6 @@ MonoBehaviour:
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
   onTweenCreated:
-    m_PersistentCalls:
-      m_Calls: []
-    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
-  onRewind:
     m_PersistentCalls:
       m_Calls: []
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
@@ -270,7 +264,6 @@ MonoBehaviour:
   assignForwardAndUp: 0
   forwardDirection: {x: 0, y: 0, z: 1}
   upDirection: {x: 0, y: 1, z: 0}
-  tweenRigidbody: 0
   wps:
   - {x: 3.8321667, y: 6.9544535, z: 0}
   - {x: -6.0542445, y: 9.465288, z: 0}
@@ -458,7 +451,6 @@ MonoBehaviour:
   pathColor: {r: 1, g: 1, b: 1, a: 0.5}
   lastSrcPosition: {x: 4.45, y: -1.83, z: 0}
   wpsDropdown: 0
-  dropToFloorOffset: 0
 --- !u!33 &118309270
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -754,7 +746,6 @@ MonoBehaviour:
   hasOnStepComplete: 0
   hasOnComplete: 0
   hasOnTweenCreated: 0
-  hasOnRewind: 0
   onStart:
     m_PersistentCalls:
       m_Calls: []
@@ -781,11 +772,6 @@ MonoBehaviour:
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
   onTweenCreated:
-    m_PersistentCalls:
-      m_Calls: []
-    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
-  onRewind:
     m_PersistentCalls:
       m_Calls: []
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
@@ -829,7 +815,6 @@ MonoBehaviour:
   assignForwardAndUp: 0
   forwardDirection: {x: 0, y: 0, z: 1}
   upDirection: {x: 0, y: 1, z: 0}
-  tweenRigidbody: 0
   wps:
   - {x: 13.417454, y: 2.978077, z: 0}
   - {x: 9.493597, y: 8.510473, z: 0}
@@ -1086,7 +1071,6 @@ MonoBehaviour:
   pathColor: {r: 1, g: 1, b: 1, a: 0.5}
   lastSrcPosition: {x: 10.45, y: -1.83, z: 0}
   wpsDropdown: 0
-  dropToFloorOffset: 0
 --- !u!23 &1087750406
 MeshRenderer:
   m_ObjectHideFlags: 0
