@@ -25,6 +25,10 @@ public class GamePanel : MonoBehaviour {
     public Transform bottomLeftPos;
     public Transform bottomRightPos;
     public Transform bottomAllPos;
+    public Transform bottomMidPos;
+    public Transform crazyBottomAllPos;
+
+    public Transform bottomBollPos;
 
     public GameObject leftAllMoveStock;
     public GameObject leftTopMoveStock;
@@ -39,6 +43,10 @@ public class GamePanel : MonoBehaviour {
     public GameObject bottomAllMoveStock;
     public GameObject bottomLeftMoveStock;
     public GameObject bottomRightMoveStock;
+    public GameObject bottomMidMoveStock;
+    public GameObject CrazyBottomAllMoveStock;
+
+    public GameObject bottomBollMoveStock;
 
     public GameObject beginPos;  //物体生成位置
     public GameObject stageLabelPos; //关卡名称生成位置
@@ -190,6 +198,18 @@ public class GamePanel : MonoBehaviour {
                 else if (cf.ItemTemplateList[i] == "BottomAllMove")
                 {
                     BottomAllMove(200);
+                }
+                else if (cf.ItemTemplateList[i] == "BottomMidMove")
+                {
+                    BottomMidMove(200);
+                }
+                else if (cf.ItemTemplateList[i] == "CrazyBottomAllMove")
+                {
+                    CrazyBottomAllMove(200);
+                }
+                else if (cf.ItemTemplateList[i] == "BottomBollMove")
+                {
+                    BottomBollMove(200);
                 }
                 else {
                     num++;
@@ -354,6 +374,18 @@ public class GamePanel : MonoBehaviour {
             bottomRightMoveStock.transform.localPosition = bottomRightPos.localPosition;
     }
 
+    public void BottomMidMove(float dis)
+    {
+        bottomMidMoveStock.GetComponent<Animation>().Play("BottomMidMoveAnimation");
+    }
+
+    public void StopBottomMidMove()
+    {
+        if (bottomMidMoveStock.GetComponent<Animation>() != null)
+            bottomMidMoveStock.GetComponent<Animation>().Stop();
+        bottomMidMoveStock.transform.localPosition = bottomMidPos.localPosition;
+    }
+
     public void BottomAllMove(float dis)
     {
         bottomAllMoveStock.GetComponent<Animation>().Play("BottomAllMoveAnimation");
@@ -364,6 +396,30 @@ public class GamePanel : MonoBehaviour {
         if (bottomAllMoveStock.GetComponent<Animation>() != null)
             bottomAllMoveStock.GetComponent<Animation>().Stop();
         bottomAllMoveStock.transform.localPosition = bottomAllPos.localPosition;
+    }
+
+    public void CrazyBottomAllMove(float dis)
+    {
+        CrazyBottomAllMoveStock.GetComponent<Animation>().Play("CrazyBottomAllMoveAnimation");
+    }
+
+    public void StopCrazyBottomAllMove()
+    {
+        if (CrazyBottomAllMoveStock.GetComponent<Animation>() != null)
+            CrazyBottomAllMoveStock.GetComponent<Animation>().Stop();
+        CrazyBottomAllMoveStock.transform.localPosition = crazyBottomAllPos.localPosition;
+    }
+
+    public void BottomBollMove(float dis)
+    {
+        bottomBollMoveStock.GetComponent<Animation>().Play("BottomBollMoveAnimation");
+    }
+
+    public void StopBottomBollMove()
+    {
+        if (bottomBollMoveStock.GetComponent<Animation>() != null)
+            bottomBollMoveStock.GetComponent<Animation>().Stop();
+        bottomBollMoveStock.transform.localPosition = bottomBollPos.localPosition;
     }
 
     #endregion
@@ -451,13 +507,19 @@ public class GamePanel : MonoBehaviour {
         StopBottomLeftMove();
         StopBottomRightMove();
         StopAllBottomMove();
+        StopBottomMidMove();
+        StopCrazyBottomAllMove();
+
         StopLeftBottomMove();
         StopLeftMidMove();
         StopLeftTopMove();
         StopLeftAllMove();
+
         StopRightBottomMove();
         StopRightMidMove();
         StopRightTopMove();
         StopAllRightMove();
+
+        StopBottomBollMove();
     }
 }
