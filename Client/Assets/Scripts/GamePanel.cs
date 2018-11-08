@@ -57,7 +57,7 @@ public class GamePanel : MonoBehaviour {
     #region 变量
     int num = 0;
     float timer = 0;
-
+    int stageNum;
     #endregion
 
     #region 单例
@@ -79,28 +79,7 @@ public class GamePanel : MonoBehaviour {
     {
         protectBtn.transform.localPosition = new Vector3(0,-150,0);
         CreatePubbleItem();
-        List<string> templateList = new List<string>();
-        templateList.Add("CarTemplate");
-        templateList.Add("JingGuBangTemplate");
-        templateList.Add("SquadGroupTemplate");
-        templateList.Add("AntGroupTemplate");
-        templateList.Add("LuDengTemplate");
-        templateList.Add("buppleGroupTemplate");
-        templateList.Add("AnimDog3Template");
-        templateList.Add("JingGuBangTemplate");
-        templateList.Add("AnimDog4Template");
-        templateList.Add("CarTemplate");
-        templateList.Add("AnimDogTemplate");
-        templateList.Add("AntGroupTemplate");
-        templateList.Add("LuDengTemplate");
-        templateList.Add("CarTemplate");
-        templateList.Add("JingGuBangTemplate");
-        templateList.Add("AntTemplate");
-        templateList.Add("buppleGroupTemplate");
-        templateList.Add("CarTemplate");
-        templateList.Add("CarTemplate");
-        templateList.Add("SquadGroupTemplate");
-        Apply(templateList);
+        Apply();
     }
 
 
@@ -116,19 +95,33 @@ public class GamePanel : MonoBehaviour {
     }
 
 
-    public void Apply(List<string> templateList)
+    public void Apply()
     {
         StopAllCoroutines();
-        StartCoroutine(CreateColliderItem(templateList));
+        StartCoroutine(CreateColliderItem());
     }
 
 
-    IEnumerator CreateColliderItem(List<string> templateList)
+    IEnumerator CreateColliderItem()
     {
         timer += Time.deltaTime;
         num = 0;
-        for (int stage = 1; stage <= StageConfigManager.stageConfigList.Count; stage++)
+        Debug.LogError("##PlayerPrefs.GetIntStageRecord" + PlayerPrefs.GetInt("StageRecord"));
+        if (PlayerPrefs.GetInt("StageRecord") == -1)
         {
+            PlayerPrefs.SetInt("StageRecord", 1);
+            stageNum = 1;
+        }
+        else
+        {
+            stageNum = PlayerPrefs.GetInt("StageRecord");
+            Debug.LogError("##stageNum;" + stageNum);
+        }
+        
+        for (int stage = stageNum; stage <= StageConfigManager.stageConfigList.Count; stage++)
+        {
+            if (stageNum == StageConfigManager.stageConfigList.Count + 1) stageNum = 1;
+            PlayerPrefs.SetInt("StageRecord", stage);
             StopAllAnimation();
             StageConfigManager.StageConfig cf = StageConfigManager.GetStageConfig(stage);
             
@@ -242,6 +235,7 @@ public class GamePanel : MonoBehaviour {
 
                 }
             }
+            
         }
     }
 
@@ -490,7 +484,7 @@ public class GamePanel : MonoBehaviour {
             //    AudioClip collideClip = (AudioClip)Resources.Load(GameDefine.AudioPath + "boom");
             //    AudioSource.PlayClipAtPoint(collideClip, transform.position);
                 GameData.Instance.colliderList[i].transform.Find("Image").gameObject.SetActive(false);
-                Debug.LogError("##"+ GameData.Instance.colliderList[i].name);
+ //               Debug.LogError("##"+ GameData.Instance.colliderList[i].name);
                 GameData.Instance.colliderList[i].transform.Find("CollideImg").gameObject.SetActive(false);
                 GameData.Instance.colliderList[i].transform.Find("BoomImg").gameObject.SetActive(true);
                 yield return new WaitForSeconds(0.02f);
