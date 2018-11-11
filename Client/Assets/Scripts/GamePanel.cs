@@ -13,9 +13,7 @@ public class GamePanel : MonoBehaviour {
     public Text stageLabel;
 
     public Transform LeftTopPos;
-    public Transform crazyLeftTopPos;
     public Transform LeftMidPos;
-    public Transform crazyLeftMidPos;
     public Transform LeftBottomPos;
     public Transform LeftAllPos;
 
@@ -34,9 +32,7 @@ public class GamePanel : MonoBehaviour {
 
     public GameObject leftAllMoveStock;
     public GameObject leftTopMoveStock;
-    public GameObject crazyLeftTopMoveStock;
     public GameObject leftMidMoveStock;
-    public GameObject crazyLeftMidMoveStock;
     public GameObject leftBottomMoveStock;
 
     public GameObject rightAllMoveStock;
@@ -180,17 +176,9 @@ public class GamePanel : MonoBehaviour {
                 if (cf.ItemTemplateList[i] == "LeftTopMove") {
                     LeftTopMove(200);
                 }
-                else if (cf.ItemTemplateList[i] == "CrazyLeftTopMove")
-                {
-                    CrazyLeftTopMove(200);
-                }
                 else if (cf.ItemTemplateList[i] == "LeftMidMove")
                 {
                     LeftMidMove(200);
-                }
-                else if (cf.ItemTemplateList[i] == "CrazyLeftMidMove")
-                {
-                    CrazyLeftMidMove(200);
                 }
                 else if (cf.ItemTemplateList[i] == "LeftBottomMove")
                 {
@@ -291,19 +279,6 @@ public class GamePanel : MonoBehaviour {
             leftTopMoveStock.transform.localPosition = LeftTopPos.localPosition;
     }
 
-    public void CrazyLeftTopMove(float dis)
-    {
-        crazyLeftTopMoveStock.GetComponent<Animation>().Play("LeftTopMoveAnimation");
-    }
-
-
-    public void StopCrazyLeftTopMove()
-    {
-        if (crazyLeftTopMoveStock.GetComponent<Animation>() != null)
-            crazyLeftTopMoveStock.GetComponent<Animation>().Stop();
-        crazyLeftTopMoveStock.transform.localPosition = crazyLeftTopPos.localPosition;
-    }
-
 
     public void LeftMidMove(float dis)
     {
@@ -315,18 +290,6 @@ public class GamePanel : MonoBehaviour {
         if (leftMidMoveStock.GetComponent<Animation>() != null)
             leftMidMoveStock.GetComponent<Animation>().Stop();
             leftMidMoveStock.transform.localPosition = LeftMidPos.localPosition;
-    }
-
-    public void CrazyLeftMidMove(float dis)
-    {
-        crazyLeftMidMoveStock.GetComponent<Animation>().Play("CrazyLeftMidMoveAnimation");
-    }
-
-    public void StopCrazyLeftMidMove()
-    {
-        if (crazyLeftMidMoveStock.GetComponent<Animation>() != null)
-            crazyLeftMidMoveStock.GetComponent<Animation>().Stop();
-        crazyLeftMidMoveStock.transform.localPosition = crazyLeftMidPos.localPosition;
     }
 
 
@@ -568,8 +531,6 @@ public class GamePanel : MonoBehaviour {
         StopLeftBottomMove();
         StopLeftMidMove();
         StopLeftTopMove();
-        StopCrazyLeftMidMove();
-        StopCrazyLeftTopMove();
         StopLeftAllMove();
 
         StopRightBottomMove();
