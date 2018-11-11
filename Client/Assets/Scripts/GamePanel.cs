@@ -55,12 +55,9 @@ public class GamePanel : MonoBehaviour {
     #endregion
 
     #region 变量
-
     int num = 0;
     float timer = 0;
     int stageNum;
-    int duanW;
-
     #endregion
 
     #region 单例
@@ -75,29 +72,6 @@ public class GamePanel : MonoBehaviour {
     {
         instance = this;
         StageConfigManager.Init();
-
-        if (PlayerPrefs.GetInt("StageRecord") == -1)
-        {
-            PlayerPrefs.SetInt("StageRecord", 1);
-            stageNum = 1;
-        }
-        else
-        {
-            stageNum = PlayerPrefs.GetInt("StageRecord");
-            Debug.LogError("##stageNum;" + stageNum);
-        }
-
-        if (PlayerPrefs.GetInt("duanWei") == -1)
-        {
-            PlayerPrefs.SetInt("duanWei", 0);
-            duanW = 1;
-        }
-        else
-        {
-            duanW = PlayerPrefs.GetInt("duanWei");
-            Debug.LogError("##duanW;" + duanW);
-        }
-
         Init();
     }
 
@@ -133,19 +107,21 @@ public class GamePanel : MonoBehaviour {
         timer += Time.deltaTime;
         num = 0;
         Debug.LogError("##PlayerPrefs.GetIntStageRecord" + PlayerPrefs.GetInt("StageRecord"));
-
+        if (PlayerPrefs.GetInt("StageRecord") == -1)
+        {
+            PlayerPrefs.SetInt("StageRecord", 1);
+            stageNum = 1;
+        }
+        else
+        {
+            stageNum = PlayerPrefs.GetInt("StageRecord");
+            Debug.LogError("##stageNum;" + stageNum);
+        }
         
         for (int stage = stageNum; stage <= StageConfigManager.stageConfigList.Count; stage++)
         {
             if (stageNum == StageConfigManager.stageConfigList.Count + 1) stageNum = 1;
-            //5关一阶
-            int dw = stage / 5;
-            if (dw > duanW)
-            {
-                PlayerPrefs.SetInt("StageRecord", duanW * 5 + 1);     //纪录每阶第一关
-                PlayerPrefs.SetInt("duanwei",duanW);
-            }
-
+            PlayerPrefs.SetInt("StageRecord", stage);
             StopAllAnimation();
             StageConfigManager.StageConfig cf = StageConfigManager.GetStageConfig(stage);
             
