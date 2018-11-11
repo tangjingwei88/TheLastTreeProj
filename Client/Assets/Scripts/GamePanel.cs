@@ -28,6 +28,13 @@ public class GamePanel : MonoBehaviour {
     public Transform bottomMidPos;
     public Transform crazyBottomAllPos;
 
+    public Transform FCRMovePos;
+    public Transform FCSMovePos;
+    public Transform FCRSmallLeftMovePos;
+    public Transform FCRSmallRightMovePos;
+    public Transform FCSSmallLeftMovePos;
+    public Transform FCSSmallRightMovePos;
+
     public Transform bottomBollPos;
 
     public GameObject leftAllMoveStock;
@@ -45,6 +52,14 @@ public class GamePanel : MonoBehaviour {
     public GameObject bottomRightMoveStock;
     public GameObject bottomMidMoveStock;
     public GameObject CrazyBottomAllMoveStock;
+
+    public GameObject FCRMoveStock;
+    public GameObject FCSMoveStock;
+    public GameObject FCRSmallLeftMoveStock;
+    public GameObject FCRSmallRightMoveStock;
+    public GameObject FCSSmallLeftMoveStock;
+    public GameObject FCSSmallRightMoveStock;
+
 
     public GameObject bottomBollMoveStock;
 
@@ -106,7 +121,7 @@ public class GamePanel : MonoBehaviour {
     {
         timer += Time.deltaTime;
         num = 0;
-        Debug.LogError("##PlayerPrefs.GetIntStageRecord" + PlayerPrefs.GetInt("StageRecord"));
+//        Debug.LogError("##PlayerPrefs.GetIntStageRecord" + PlayerPrefs.GetInt("StageRecord"));
         if (PlayerPrefs.GetInt("StageRecord") == -1)
         {
             PlayerPrefs.SetInt("StageRecord", 1);
@@ -115,13 +130,12 @@ public class GamePanel : MonoBehaviour {
         else
         {
             stageNum = PlayerPrefs.GetInt("StageRecord");
-            Debug.LogError("##stageNum;" + stageNum);
         }
         
-        for (int stage = stageNum; stage <= StageConfigManager.stageConfigList.Count; stage++)
+        for (int stage = 1; stage <= StageConfigManager.stageConfigList.Count; stage++)
         {
-            if (stageNum == StageConfigManager.stageConfigList.Count + 1) stageNum = 1;
-            PlayerPrefs.SetInt("StageRecord", stage);
+           // if (stageNum == StageConfigManager.stageConfigList.Count + 1) stageNum = 1;
+          //  PlayerPrefs.SetInt("StageRecord", stage);
             StopAllAnimation();
             StageConfigManager.StageConfig cf = StageConfigManager.GetStageConfig(stage);
             
@@ -203,6 +217,30 @@ public class GamePanel : MonoBehaviour {
                 else if (cf.ItemTemplateList[i] == "BottomBollMove")
                 {
                     BottomBollMove(200);
+                }
+                else if (cf.ItemTemplateList[i] == "FCRMove")
+                {
+                    FCRMove(200);
+                }
+                else if (cf.ItemTemplateList[i] == "FCSMove")
+                {
+                    FCSMove(200);
+                }
+                else if (cf.ItemTemplateList[i] == "FCRSmallLeftMove")
+                {
+                    FCRSmallLeftMove(200);
+                }
+                else if (cf.ItemTemplateList[i] == "FCRSmallRightMove")
+                {
+                    FCRSmallRightMove(200);
+                }
+                else if (cf.ItemTemplateList[i] == "FCSSmallLeftMove")
+                {
+                    FCSSmallLeftMove(200);
+                }
+                else if (cf.ItemTemplateList[i] == "FCSSmallRightMove")
+                {
+                    FCSSmallRightMove(200);
                 }
                 else {
                     num++;
@@ -416,6 +454,85 @@ public class GamePanel : MonoBehaviour {
         bottomBollMoveStock.transform.localPosition = bottomBollPos.localPosition;
     }
 
+    public void FCRMove(float dis)
+    {
+        FCRMoveStock.SetActive(true);
+        FCRMoveStock.GetComponent<Animation>().Play("FCRMoveAnimation");
+    }
+
+    public void StopFCRMove()
+    {
+        if (FCRMoveStock.GetComponent<Animation>() != null)
+            FCRMoveStock.GetComponent<Animation>().Stop();
+        FCRMoveStock.SetActive(false);
+    }
+
+
+    public void FCSMove(float dis)
+    {
+        FCSMoveStock.SetActive(true);
+        FCSMoveStock.GetComponent<Animation>().Play("FCSMoveAnimation");
+    }
+
+    public void StopFCSMove()
+    {
+        if (FCSMoveStock.GetComponent<Animation>() != null)
+            FCSMoveStock.GetComponent<Animation>().Stop();
+        FCSMoveStock.SetActive(false);
+    }
+
+
+    public void FCRSmallLeftMove(float dis)
+    {
+        FCRSmallLeftMoveStock.SetActive(true);
+        FCRSmallLeftMoveStock.GetComponent<Animation>().Play("FCRMoveAnimation");
+    }
+
+    public void StopFCRSmallLeftMove()
+    {
+        if (FCRSmallLeftMoveStock.GetComponent<Animation>() != null)
+            FCRSmallLeftMoveStock.GetComponent<Animation>().Stop();
+        FCRSmallLeftMoveStock.SetActive(false);
+    }
+
+    public void FCRSmallRightMove(float dis)
+    {
+        FCRSmallRightMoveStock.SetActive(true);
+        FCRSmallRightMoveStock.GetComponent<Animation>().Play("FCRMoveAnimation");
+    }
+
+    public void StopFCRSmallRightMove()
+    {
+        if (FCRSmallRightMoveStock.GetComponent<Animation>() != null)
+            FCRSmallRightMoveStock.GetComponent<Animation>().Stop();
+        FCRSmallRightMoveStock.SetActive(false);
+    }
+
+    public void FCSSmallRightMove(float dis)
+    {
+        FCSSmallRightMoveStock.SetActive(true);
+        FCSSmallRightMoveStock.GetComponent<Animation>().Play("FCSMoveAnimation");
+    }
+
+    public void StopFCSSmallRightMove()
+    {
+        if (FCSSmallRightMoveStock.GetComponent<Animation>() != null)
+            FCSSmallRightMoveStock.GetComponent<Animation>().Stop();
+        FCSSmallRightMoveStock.SetActive(false);
+    }
+
+    public void FCSSmallLeftMove(float dis)
+    {
+        FCSSmallLeftMoveStock.SetActive(true);
+        FCSSmallLeftMoveStock.GetComponent<Animation>().Play("FCSMoveAnimation");
+    }
+
+    public void StopFCSSmallLeftMove()
+    {
+        if (FCSSmallLeftMoveStock.GetComponent<Animation>() != null)
+            FCSSmallLeftMoveStock.GetComponent<Animation>().Stop();
+        FCSSmallLeftMoveStock.SetActive(false);
+    }
     #endregion
 
 
@@ -513,6 +630,13 @@ public class GamePanel : MonoBehaviour {
         StopRightMidMove();
         StopRightTopMove();
         StopAllRightMove();
+
+        StopFCRMove();
+        StopFCRSmallLeftMove();
+        StopFCRSmallRightMove();
+        StopFCSMove();
+        StopFCSSmallLeftMove();
+        StopFCSSmallRightMove();
 
         StopBottomBollMove();
     }
