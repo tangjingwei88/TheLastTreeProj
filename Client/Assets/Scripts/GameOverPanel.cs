@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameOverPanel : MonoBehaviour {
 
@@ -16,5 +17,12 @@ public class GameOverPanel : MonoBehaviour {
         this.gameObject.SetActive(false);
         StopAllCoroutines();
         GamePanel.Instance.Init();
+    }
+
+    public void HomeBtnClick()
+    {
+        this.gameObject.SetActive(false);
+        StopAllCoroutines();
+        SceneManager.LoadScene("StartScene");
     }
 }
