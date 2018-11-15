@@ -137,6 +137,8 @@ public class GamePanel : MonoBehaviour {
            // if (stageNum == StageConfigManager.stageConfigList.Count + 1) stageNum = 1;
           //  PlayerPrefs.SetInt("StageRecord", stage);
             StopAllAnimation();
+            //随机生成关卡
+            //int stageRandom = Random.Range(1, StageConfigManager.stageConfigList.Count);
             StageConfigManager.StageConfig cf = StageConfigManager.GetStageConfig(stage);
             
             if (LabelObj != null)
