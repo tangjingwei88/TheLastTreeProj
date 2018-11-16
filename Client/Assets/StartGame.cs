@@ -5,17 +5,19 @@ using UnityEngine.SceneManagement;
 
 public class StartGame : MonoBehaviour {
 
-
+    public static bool isRandMode = false;
 
     public void RandomModeStartClick()
     {
         StartLoadMainScenes();
+        isRandMode = true;
     }
 
 
     public void OrderModeStartClick()
     {
         StartLoadMainScenes();
+        isRandMode = false;
     }
 
 

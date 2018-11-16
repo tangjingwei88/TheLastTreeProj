@@ -137,9 +137,16 @@ public class GamePanel : MonoBehaviour {
            // if (stageNum == StageConfigManager.stageConfigList.Count + 1) stageNum = 1;
           //  PlayerPrefs.SetInt("StageRecord", stage);
             StopAllAnimation();
-            //随机生成关卡
-            //int stageRandom = Random.Range(1, StageConfigManager.stageConfigList.Count);
-            StageConfigManager.StageConfig cf = StageConfigManager.GetStageConfig(stage);
+            StageConfigManager.StageConfig cf;
+            if (StartGame.isRandMode)
+            {
+                //随机生成关卡
+                int stageRandom = Random.Range(1, StageConfigManager.stageConfigList.Count);
+                cf = StageConfigManager.GetStageConfig(stageRandom);
+            }
+            else {
+                cf = StageConfigManager.GetStageConfig(stage);
+            }
             
             if (LabelObj != null)
                 Destroy(LabelObj);
@@ -151,8 +158,8 @@ public class GamePanel : MonoBehaviour {
             LabelObj.transform.parent = beginPos.transform;
             LabelObj.transform.localPosition = stageLabelPos.transform.localPosition;
             LabelObj.transform.localScale = Vector3.one;
-            LabelObj.GetComponent<Text>().text = cf.ID.ToString();
-            stageLabel.text = cf.ID.ToString();
+            LabelObj.GetComponent<Text>().text = stage.ToString();
+            stageLabel.text = stage.ToString();
 
             GameData.Instance.protectPower = cf.ProtectPower;
             GameData.Instance.protectRotateSpeed = cf.ProtectRotateSpeed;
