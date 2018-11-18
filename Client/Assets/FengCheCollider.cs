@@ -15,7 +15,7 @@ public class FengCheCollider : MonoBehaviour {
 
             Vector3 direct = collPos - borderPos;
             //transform.GetComponent<Rigidbody2D>().AddForce(new Vector2(direct.x*10,direct.y*10));
-            collision.gameObject.transform.GetComponent<Rigidbody2D>().AddForce(new Vector2(direct.x * GameData.Instance.protectPower / 5, direct.y * GameData.Instance.protectPower / 5));
+            collision.gameObject.transform.GetComponent<Rigidbody2D>().AddForce(new Vector2(direct.x * GameData.Instance.protectPower /8, direct.y * GameData.Instance.protectPower / 8));
 
         }
 

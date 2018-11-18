@@ -11,6 +11,7 @@ public class GamePanel : MonoBehaviour {
     public GameObject protectBtn;
     public GameObject tree;
     public Text stageLabel;
+    public Text stageNumLabel;
 
     public Transform LeftTopPos;
     public Transform LeftMidPos;
@@ -130,12 +131,20 @@ public class GamePanel : MonoBehaviour {
         else
         {
             stageNum = PlayerPrefs.GetInt("StageRecord");
+            stageNumLabel.text = stageNum.ToString();
         }
         
         for (int stage = 1; stage <= StageConfigManager.stageConfigList.Count; stage++)
         {
-           // if (stageNum == StageConfigManager.stageConfigList.Count + 1) stageNum = 1;
-          //  PlayerPrefs.SetInt("StageRecord", stage);
+            // if (stageNum == StageConfigManager.stageConfigList.Count + 1) stageNum = 1;
+            //  PlayerPrefs.SetInt("StageRecord", stage);
+            if (stage > stageNum) {
+                stageNum = stage;
+                PlayerPrefs.SetInt("StageRecord", stageNum);
+                stageNumLabel.text = stageNum.ToString();
+                Debug.LogError("stageNum" + stageNum);
+                Debug.LogError("stage" + stage);
+            }
             StopAllAnimation();
             StageConfigManager.StageConfig cf;
             if (StartGame.isRandMode)
@@ -255,30 +264,33 @@ public class GamePanel : MonoBehaviour {
                     num++;
                     Object obj;
                     obj = Resources.Load(GameDefine.ItemPrefabPath + cf.ItemTemplateList[i]);
-                    //  Debug.LogError(GameDefine.ItemPrefabPath + templateList[i]);
-                    GameObject item = Instantiate((GameObject)obj);
-                    item.SetActive(true);
-                    item.transform.parent = beginPos.transform;
-                    item.transform.localPosition = beginPos.transform.localPosition;
-                    item.transform.localScale = Vector3.one;
-
-                    if (item.name.Contains("Group"))
+                    //  Debug.LogError(GameDefine.ItemPrefabPath + cf.ItemTemplateList[i]);
+                    if (obj != null)
                     {
-                        foreach (Transform child in item.transform)
+                        GameObject item = Instantiate((GameObject)obj);
+                        item.SetActive(true);
+                        item.transform.parent = beginPos.transform;
+                        item.transform.localPosition = beginPos.transform.localPosition;
+                        item.transform.localScale = Vector3.one;
+
+                        if (item.name.Contains("Group"))
                         {
-                            num++;
-                            child.gameObject.name += num;
-                            GameData.Instance.colliderList.Add(child.gameObject);
+                            foreach (Transform child in item.transform)
+                            {
+                                num++;
+                                child.gameObject.name += num;
+                                GameData.Instance.colliderList.Add(child.gameObject);
+                            }
+                            GameData.Instance.colliderList.Add(item);
                         }
-                        GameData.Instance.colliderList.Add(item);
-                    }
-                    else
-                    {
-                        item.name += num;
-                        GameData.Instance.colliderList.Add(item);
-                    }
+                        else
+                        {
+                            item.name += num;
+                            GameData.Instance.colliderList.Add(item);
+                        }
 
-                    yield return new WaitForSeconds(5);
+                        yield return new WaitForSeconds(5);
+                    }
 
                 }
             }
