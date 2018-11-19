@@ -122,7 +122,6 @@ public class GamePanel : MonoBehaviour {
     {
         timer += Time.deltaTime;
         num = 0;
-//        Debug.LogError("##PlayerPrefs.GetIntStageRecord" + PlayerPrefs.GetInt("StageRecord"));
         if (PlayerPrefs.GetInt("StageRecord") == -1)
         {
             PlayerPrefs.SetInt("StageRecord", 1);
@@ -136,14 +135,11 @@ public class GamePanel : MonoBehaviour {
         
         for (int stage = 1; stage <= StageConfigManager.stageConfigList.Count; stage++)
         {
-            // if (stageNum == StageConfigManager.stageConfigList.Count + 1) stageNum = 1;
-            //  PlayerPrefs.SetInt("StageRecord", stage);
             if (stage > stageNum) {
                 stageNum = stage;
                 PlayerPrefs.SetInt("StageRecord", stageNum);
                 stageNumLabel.text = stageNum.ToString();
-                Debug.LogError("stageNum" + stageNum);
-                Debug.LogError("stage" + stage);
+
             }
             StopAllAnimation();
             StageConfigManager.StageConfig cf;
