@@ -28,7 +28,8 @@ public class ColliderItem : MonoBehaviour {
                 GameObject tree = GameObject.FindGameObjectWithTag("tree");
                 Vector3 treePos = tree.transform.localPosition;
                 Vector3 collPos = coll.gameObject.GetComponent<RectTransform>().localPosition;
-
+               // Debug.LogError("##treePos:" + treePos);
+               // Debug.LogError("##collPos:" + collPos);
                 Vector3 direct = collPos - treePos;
                 transform.GetComponent<Rigidbody2D>().AddForce(new Vector2(direct.x * GameData.Instance.protectPower, direct.y * GameData.Instance.protectPower));
                 transform.Find("CollideImg").gameObject.SetActive(true);
