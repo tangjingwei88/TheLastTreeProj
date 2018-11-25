@@ -194,8 +194,9 @@ GameObject:
   - component: {fileID: 61786813933151540}
   - component: {fileID: 114546320173551642}
   - component: {fileID: 114653038063719368}
+  - component: {fileID: 95594114583845332}
   m_Layer: 5
-  m_Name: KuangCTemplate (4)
+  m_Name: KuangCTemplateboom (4)
   m_TagString: enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -282,8 +283,9 @@ GameObject:
   - component: {fileID: 61656241377543940}
   - component: {fileID: 114908015759358156}
   - component: {fileID: 114793576547902028}
+  - component: {fileID: 95271694584727140}
   m_Layer: 5
-  m_Name: KuangCTemplate (10)
+  m_Name: KuangCTemplateboom (10)
   m_TagString: enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -427,8 +429,9 @@ GameObject:
   - component: {fileID: 61613883118585622}
   - component: {fileID: 114957774226079790}
   - component: {fileID: 114445806245714802}
+  - component: {fileID: 95036283186659172}
   m_Layer: 5
-  m_Name: KuangCTemplate (8)
+  m_Name: KuangCTemplateboom (8)
   m_TagString: enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -482,7 +485,7 @@ GameObject:
   - component: {fileID: 114361776236133020}
   - component: {fileID: 114598096136410616}
   m_Layer: 5
-  m_Name: KuangCTemplate
+  m_Name: KuangCTemplatefantan
   m_TagString: enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -590,7 +593,7 @@ GameObject:
   - component: {fileID: 114218419590509062}
   - component: {fileID: 114986650915260120}
   m_Layer: 5
-  m_Name: KuangCTemplate (6)
+  m_Name: KuangCTemplatefantan (6)
   m_TagString: enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -681,7 +684,7 @@ GameObject:
   - component: {fileID: 114211534025188270}
   - component: {fileID: 114775820491151068}
   m_Layer: 5
-  m_Name: KuangCTemplate (1)
+  m_Name: KuangCTemplatefantan (1)
   m_TagString: enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -735,7 +738,7 @@ GameObject:
   - component: {fileID: 114786067272581492}
   - component: {fileID: 114241256297448344}
   m_Layer: 5
-  m_Name: KuangCTemplate (3)
+  m_Name: KuangCTemplatefantan (3)
   m_TagString: enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -788,8 +791,9 @@ GameObject:
   - component: {fileID: 61298193930290262}
   - component: {fileID: 114453657947661374}
   - component: {fileID: 114877937034290828}
+  - component: {fileID: 95282989511139280}
   m_Layer: 5
-  m_Name: KuangCTemplate (5)
+  m_Name: KuangCTemplateboom (5)
   m_TagString: enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -843,7 +847,7 @@ GameObject:
   - component: {fileID: 114187208094331140}
   - component: {fileID: 114431000229592690}
   m_Layer: 5
-  m_Name: KuangCTemplate (9)
+  m_Name: KuangCTemplatefantan (9)
   m_TagString: enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1556,6 +1560,74 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 60, y: 60}
   m_EdgeRadius: 0
+--- !u!95 &95036283186659172
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1316177068505634}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: d9548832e8c384e4e99ed2a3d19aecda, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+--- !u!95 &95271694584727140
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1198941345545630}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: d9548832e8c384e4e99ed2a3d19aecda, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+--- !u!95 &95282989511139280
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1888473713785572}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: d9548832e8c384e4e99ed2a3d19aecda, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+--- !u!95 &95594114583845332
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1171450091779294}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: d9548832e8c384e4e99ed2a3d19aecda, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
 --- !u!114 &114008877057390344
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3653,7 +3725,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 69.99327, y: -119.99988}
+  m_AnchoredPosition: {x: 274, y: -119.99988}
   m_SizeDelta: {x: 60, y: 60}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &224365449908947286
@@ -3914,7 +3986,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -129.99872, y: -120}
+  m_AnchoredPosition: {x: -331, y: -120}
   m_SizeDelta: {x: 60, y: 60}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &224632745874645698
@@ -3935,7 +4007,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -29.997253, y: -326.00012}
+  m_AnchoredPosition: {x: -29.997253, y: -437}
   m_SizeDelta: {x: 60, y: 60}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &224690459667932746

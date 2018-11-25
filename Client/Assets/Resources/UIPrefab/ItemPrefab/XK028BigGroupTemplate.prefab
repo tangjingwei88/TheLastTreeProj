@@ -302,8 +302,9 @@ GameObject:
   - component: {fileID: 61538583331659522}
   - component: {fileID: 114931668224795000}
   - component: {fileID: 114504671759258266}
+  - component: {fileID: 95165920008459470}
   m_Layer: 5
-  m_Name: KuangCTemplate (8)
+  m_Name: KuangCTemplateboom (8)
   m_TagString: enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -339,8 +340,9 @@ GameObject:
   - component: {fileID: 61207846574490636}
   - component: {fileID: 114280358168811754}
   - component: {fileID: 114132257350051922}
+  - component: {fileID: 95018025507889038}
   m_Layer: 5
-  m_Name: KuangCTemplate (10)
+  m_Name: KuangCTemplateboom (10)
   m_TagString: enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -461,8 +463,9 @@ GameObject:
   - component: {fileID: 61554370818104746}
   - component: {fileID: 114275967800597454}
   - component: {fileID: 114453162612491732}
+  - component: {fileID: 95466774589385006}
   m_Layer: 5
-  m_Name: KuangCTemplate (13)
+  m_Name: KuangCTemplateboom (13)
   m_TagString: enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -515,8 +518,9 @@ GameObject:
   - component: {fileID: 61333460210565378}
   - component: {fileID: 114253659022796860}
   - component: {fileID: 114539533497710684}
+  - component: {fileID: 95638788753591758}
   m_Layer: 5
-  m_Name: KuangCTemplate (15)
+  m_Name: KuangCTemplateboom (15)
   m_TagString: enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -623,8 +627,9 @@ GameObject:
   - component: {fileID: 61282406714878132}
   - component: {fileID: 114620804028302678}
   - component: {fileID: 114668769437397054}
+  - component: {fileID: 95078275658248242}
   m_Layer: 5
-  m_Name: KuangCTemplate (16)
+  m_Name: KuangCTemplateboom (16)
   m_TagString: enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -714,8 +719,9 @@ GameObject:
   - component: {fileID: 61949336475004194}
   - component: {fileID: 114845097739479848}
   - component: {fileID: 114557813450549320}
+  - component: {fileID: 95044595301432428}
   m_Layer: 5
-  m_Name: KuangCTemplate (9)
+  m_Name: KuangCTemplateboom (9)
   m_TagString: enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1208,6 +1214,108 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 120, y: 120}
   m_EdgeRadius: 0
+--- !u!95 &95018025507889038
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1317718657122624}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: d9548832e8c384e4e99ed2a3d19aecda, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+--- !u!95 &95044595301432428
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1987630480700658}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: d9548832e8c384e4e99ed2a3d19aecda, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+--- !u!95 &95078275658248242
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1848257320977202}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: d9548832e8c384e4e99ed2a3d19aecda, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+--- !u!95 &95165920008459470
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1260402994412656}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: d9548832e8c384e4e99ed2a3d19aecda, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+--- !u!95 &95466774589385006
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1649813084731980}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: d9548832e8c384e4e99ed2a3d19aecda, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+--- !u!95 &95638788753591758
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1712525744028784}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: d9548832e8c384e4e99ed2a3d19aecda, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
 --- !u!114 &114007569780024154
 MonoBehaviour:
   m_ObjectHideFlags: 1
