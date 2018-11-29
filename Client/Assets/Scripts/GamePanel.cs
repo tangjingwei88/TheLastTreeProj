@@ -595,6 +595,7 @@ public class GamePanel : MonoBehaviour {
             }
             GameData.Instance.colliderList.Clear();
         }
+        ScreenShake.isshakeCamera = false;
     }
 
     public void BoomClear()
@@ -611,6 +612,8 @@ public class GamePanel : MonoBehaviour {
     {
         for (int i = 0; i < GameData.Instance.colliderList.Count; i++)
         {
+            //机器震动效果
+            Handheld.Vibrate();
             if (GameData.Instance.colliderList[i] != null && 
                 !GameData.Instance.colliderList[i].gameObject.name.Contains("Group")
                 )

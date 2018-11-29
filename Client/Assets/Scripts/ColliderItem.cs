@@ -17,13 +17,18 @@ public class ColliderItem : MonoBehaviour {
             //带"boom"碰到太极圈自动爆炸
             if (transform.gameObject.name.Contains("boom"))
             {
+                //机器震动效果
+                Handheld.Vibrate();
                 StartCoroutine(BoomSelf(this.gameObject));
             }
             //碰撞有穿透问题，目前引擎没有方法解决，给碰撞体添加相反的力模拟碰撞
             else
             {
-                //  AudioClip collideClip = (AudioClip)Resources.Load(GameDefine.AudioPath + "colliderSound");
-                //  AudioSource.PlayClipAtPoint(collideClip,transform.position);
+                  AudioClip collideClip = (AudioClip)Resources.Load(GameDefine.AudioPath + GetAudioName(transform.gameObject.name));
+                if (collideClip != null)
+                {
+                    AudioSource.PlayClipAtPoint(collideClip, transform.position);
+                }
                 //根据tag找到气球，获取位置
                 GameObject tree = GameObject.FindGameObjectWithTag("tree");
                 Vector3 treePos = tree.transform.localPosition;
@@ -56,5 +61,11 @@ public class ColliderItem : MonoBehaviour {
         obj.transform.Find("BoomImg").gameObject.SetActive(true);
         yield return new WaitForSeconds(0.1f);
         Destroy(obj);
+    }
+
+    //根据prefab名字拿audio资源
+    public string GetAudioName(string str)
+    {
+        return str.Substring(0,4);
     }
 }
