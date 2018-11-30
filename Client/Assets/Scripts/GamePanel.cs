@@ -135,6 +135,7 @@ public class GamePanel : MonoBehaviour {
         
         for (int stage = 1; stage <= StageConfigManager.stageConfigList.Count; stage++)
         {
+           // Camera.main.rect = new Rect(0.0f, 0.0f, 0.0f, 1.0f);
             if (stage > stageNum) {
                 stageNum = stage;
                 PlayerPrefs.SetInt("StageRecord", stageNum);
@@ -595,7 +596,7 @@ public class GamePanel : MonoBehaviour {
             }
             GameData.Instance.colliderList.Clear();
         }
-        ScreenShake.isshakeCamera = false;
+        //ScreenShake.isshakeCamera = false;
     }
 
     public void BoomClear()
