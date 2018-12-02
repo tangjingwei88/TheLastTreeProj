@@ -130,16 +130,16 @@ public class GamePanel : MonoBehaviour {
         else
         {
             stageNum = PlayerPrefs.GetInt("StageRecord");
-            stageNumLabel.text = stageNum.ToString();
+            stageNumLabel.text = GetRewardStage().ToString();
         }
         
         for (int stage = 1; stage <= StageConfigManager.stageConfigList.Count; stage++)
         {
-           // Camera.main.rect = new Rect(0.0f, 0.0f, 0.0f, 1.0f);
+            GameData.Instance.passedStageNum += 1;
             if (stage > stageNum) {
                 stageNum = stage;
                 PlayerPrefs.SetInt("StageRecord", stageNum);
-                stageNumLabel.text = stageNum.ToString();
+                stageNumLabel.text = GetRewardStage().ToString();
 
             }
             StopAllAnimation();
@@ -585,6 +585,21 @@ public class GamePanel : MonoBehaviour {
         item.transform.localPosition = beginPos.transform.localPosition;
         item.transform.localScale = Vector3.one;
     }
+
+
+    public int GetRewardStage()
+    {
+        switch(GameData.Instance.curStageState)
+        {
+            case StageState.OrderState:
+                return 4;
+            case StageState.RandomState:
+                return 3;
+            default:
+                return -1;
+        }
+    }
+
 
     public void Clear()
     {

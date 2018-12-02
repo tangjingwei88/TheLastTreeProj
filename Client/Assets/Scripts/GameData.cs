@@ -12,6 +12,12 @@ public class GameData : MonoBehaviour {
     public float JGBRotateSpeed = 0;
     public float JGBPower = 0;
 
+    public int diamonds = 0;
+    //通过的关卡数
+    public int passedStageNum = 0;
+
+    public StageState curStageState = StageState.OrderState;
+
     public Vector3 protectPos;
     public List<GameObject> colliderList = new List<GameObject>();
 
@@ -23,5 +29,14 @@ public class GameData : MonoBehaviour {
     }
 
 
+
+
+}
+
+
+public enum StageState
+{
+    OrderState,
+    RandomState,
 
 }

@@ -13,6 +13,7 @@ public class LoadingManager : MonoBehaviour {
     {
         instance = this;
         InitConfig();
+        IOSIAPMgr.Instance.Init();
     }
 
 
