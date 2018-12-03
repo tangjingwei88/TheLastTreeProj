@@ -13,8 +13,6 @@ public class GameOverPanel : MonoBehaviour {
         if(StartGame.isRandMode)
         {
             int diam = (GameData.Instance.passedStageNum-1) / 2;
-            Debug.LogError("passedStageNum: " + GameData.Instance.passedStageNum);
-            Debug.LogError("diam: " + diam);
             if(diam >= 1)
             {
                 GameData.Instance.diamonds += diam * 5;
@@ -23,13 +21,10 @@ public class GameOverPanel : MonoBehaviour {
                 GameData.Instance.diamonds -= 3;
                 diamText.text = "- " + 3;
             }
-            PlayerPrefs.SetInt("Diamonds",GameData.Instance.diamonds);
         }
         else if(!StartGame.isRandMode)
         {
-            int diam = (GameData.Instance.passedStageNum -1 ) / 2;
-            Debug.LogError("passedStageNum: " + GameData.Instance.passedStageNum);
-            Debug.LogError("diam: " + diam);
+            int diam = (GameData.Instance.passedStageNum -1 ) / 3;
             if (diam >= 1)
             {
                 GameData.Instance.diamonds += diam * 3;
@@ -40,9 +35,9 @@ public class GameOverPanel : MonoBehaviour {
                 GameData.Instance.diamonds -= 1;
                 diamText.text = " - " + 1;
             }
-            PlayerPrefs.SetInt("Diamonds", GameData.Instance.diamonds);
-
+            
         }
+        PlayerPrefs.SetInt("Diamonds", GameData.Instance.diamonds);
         StopAllCoroutines();
     }
 
@@ -52,7 +47,21 @@ public class GameOverPanel : MonoBehaviour {
         GameData.Instance.passedStageNum = 0;
         this.gameObject.SetActive(false);
         StopAllCoroutines();
-        GamePanel.Instance.Init();
+        if (GameData.Instance.curStageState == StageState.OrderState)
+        {
+            if(GameData.Instance.diamonds >= 1)
+                GamePanel.Instance.Init();
+            else
+                HomeBtnClick();       //钻石不够直接返回主界面
+        }
+        else if (GameData.Instance.curStageState == StageState.RandomState)
+        {
+            if (GameData.Instance.diamonds >= 3)
+                GamePanel.Instance.Init();
+            else
+                HomeBtnClick();
+        }
+
     }
 
     public void HomeBtnClick()

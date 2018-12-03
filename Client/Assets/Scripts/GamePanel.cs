@@ -140,7 +140,6 @@ public class GamePanel : MonoBehaviour {
                 stageNum = stage;
                 PlayerPrefs.SetInt("StageRecord", stageNum);
                 stageNumLabel.text = GetRewardStage().ToString();
-
             }
             StopAllAnimation();
             StageConfigManager.StageConfig cf;
