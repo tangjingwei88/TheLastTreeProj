@@ -9,6 +9,7 @@ public class GameOverPanel : MonoBehaviour {
 
     public void Apply(float stage)
     {
+        GameData.Instance.diamonds = PlayerPrefs.GetInt("Diamonds");
         this.gameObject.SetActive(true);
         if (GameData.Instance.curStageState == StageState.OrderState)
         {

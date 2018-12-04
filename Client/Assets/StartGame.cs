@@ -74,6 +74,7 @@ public class StartGame : MonoBehaviour
     {
         GameData.Instance.diamonds = PlayerPrefs.GetInt("Diamonds");
         diamondText.text = GameData.Instance.diamonds.ToString();
+        RefreshModeShow();
     }
 
 
@@ -129,7 +130,7 @@ public class StartGame : MonoBehaviour
 
     public void SkeletonModeStartClick()
     {
-        GameData.Instance.curStageState = StageState.GhostState;
+        GameData.Instance.curStageState = StageState.SkeletonState;
         int nowDiamonds = PlayerPrefs.GetInt("Diamonds");
         if (nowDiamonds >= 10)
         {
@@ -190,6 +191,17 @@ public class StartGame : MonoBehaviour
             skeletonGraySprite.gameObject.SetActive(true);
 
             orderShowSprite.gameObject.SetActive(true);
+            randomShowSprite.gameObject.SetActive(false);
+            ghostShowSprite.gameObject.SetActive(false);
+            skeletonShowSprite.gameObject.SetActive(false);
+        }
+        else {
+            orderGraySprite.gameObject.SetActive(true);
+            randomGraySprite.gameObject.SetActive(true);
+            ghostGraySprite.gameObject.SetActive(true);
+            skeletonGraySprite.gameObject.SetActive(true);
+
+            orderShowSprite.gameObject.SetActive(false);
             randomShowSprite.gameObject.SetActive(false);
             ghostShowSprite.gameObject.SetActive(false);
             skeletonShowSprite.gameObject.SetActive(false);
