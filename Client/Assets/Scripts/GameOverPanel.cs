@@ -10,7 +10,22 @@ public class GameOverPanel : MonoBehaviour {
     public void Apply(float stage)
     {
         this.gameObject.SetActive(true);
-        if(StartGame.isRandMode)
+        if (GameData.Instance.curStageState == StageState.OrderState)
+        {
+            int diam = (GameData.Instance.passedStageNum - 1) / 3;
+            if (diam >= 1)
+            {
+                GameData.Instance.diamonds += diam * 3;
+                diamText.text = " + " + diam * 3;
+            }
+            else
+            {
+                GameData.Instance.diamonds -= 1;
+                diamText.text = " - " + 1;
+            }
+
+        }
+        else if (GameData.Instance.curStageState == StageState.RandomState)
         {
             int diam = (GameData.Instance.passedStageNum-1) / 2;
             if(diam >= 1)
@@ -22,21 +37,35 @@ public class GameOverPanel : MonoBehaviour {
                 diamText.text = "- " + 3;
             }
         }
-        else if(!StartGame.isRandMode)
+        else if (GameData.Instance.curStageState == StageState.GhostState)
         {
-            int diam = (GameData.Instance.passedStageNum -1 ) / 3;
+            int diam = (GameData.Instance.passedStageNum - 1) / 2;
             if (diam >= 1)
             {
-                GameData.Instance.diamonds += diam * 3;
-                diamText.text = " + " + diam * 3;
+                GameData.Instance.diamonds += diam * 10;
+                diamText.text = "+ " + diam * 10;
             }
             else
             {
-                GameData.Instance.diamonds -= 1;
-                diamText.text = " - " + 1;
+                GameData.Instance.diamonds -= 5;
+                diamText.text = "- " + 5;
             }
-            
         }
+        else if (GameData.Instance.curStageState == StageState.SkeletonState)
+        {
+            int diam = (GameData.Instance.passedStageNum - 1) / 2;
+            if (diam >= 1)
+            {
+                GameData.Instance.diamonds += diam * 20;
+                diamText.text = "+ " + diam * 20;
+            }
+            else
+            {
+                GameData.Instance.diamonds -= 10;
+                diamText.text = "- " + 10;
+            }
+        }
+
         PlayerPrefs.SetInt("Diamonds", GameData.Instance.diamonds);
         StopAllCoroutines();
     }
@@ -57,6 +86,20 @@ public class GameOverPanel : MonoBehaviour {
         else if (GameData.Instance.curStageState == StageState.RandomState)
         {
             if (GameData.Instance.diamonds >= 3)
+                GamePanel.Instance.Init();
+            else
+                HomeBtnClick();
+        }
+        else if (GameData.Instance.curStageState == StageState.GhostState)
+        {
+            if (GameData.Instance.diamonds >= 5)
+                GamePanel.Instance.Init();
+            else
+                HomeBtnClick();
+        }
+        else if (GameData.Instance.curStageState == StageState.SkeletonState)
+        {
+            if (GameData.Instance.diamonds >= 10)
                 GamePanel.Instance.Init();
             else
                 HomeBtnClick();
