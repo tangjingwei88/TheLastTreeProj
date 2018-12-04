@@ -38,5 +38,6 @@ public enum StageState
 {
     OrderState,
     RandomState,
-
+    GhostState,
+    SkeletonState,
 }

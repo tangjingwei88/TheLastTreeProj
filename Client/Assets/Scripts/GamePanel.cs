@@ -143,10 +143,28 @@ public class GamePanel : MonoBehaviour {
             }
             StopAllAnimation();
             StageConfigManager.StageConfig cf;
-            if (StartGame.isRandMode)
+
+            if (GameData.Instance.curStageState == StageState.OrderState)
             {
-                //随机生成关卡
-                int stageRandom = Random.Range(1, StageConfigManager.stageConfigList.Count);
+                //order
+                cf = StageConfigManager.GetStageConfig(stage);
+            }
+            else if (GameData.Instance.curStageState == StageState.RandomState)
+            {
+                //random
+                int stageRandom = Random.Range(8, StageConfigManager.stageConfigList.Count);
+                cf = StageConfigManager.GetStageConfig(stageRandom);
+            }
+            else if (GameData.Instance.curStageState == StageState.GhostState)
+            {
+                //Ghost
+                int stageRandom = Random.Range(18, StageConfigManager.stageConfigList.Count);
+                cf = StageConfigManager.GetStageConfig(stageRandom);
+            }
+            else if (GameData.Instance.curStageState == StageState.SkeletonState)
+            {
+                //Skeleton
+                int stageRandom = Random.Range(28, StageConfigManager.stageConfigList.Count);
                 cf = StageConfigManager.GetStageConfig(stageRandom);
             }
             else {
@@ -290,7 +308,7 @@ public class GamePanel : MonoBehaviour {
 
                 }
             }
-            
+            if (stage == StageConfigManager.stageConfigList.Count) stage = 1;
         }
     }
 
@@ -594,6 +612,10 @@ public class GamePanel : MonoBehaviour {
                 return 4;
             case StageState.RandomState:
                 return 3;
+            case StageState.GhostState:
+                return 2;
+            case StageState.SkeletonState:
+                return 2;
             default:
                 return -1;
         }

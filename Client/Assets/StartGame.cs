@@ -9,6 +9,16 @@ public class StartGame : MonoBehaviour
 
     public GameObject theRechargePanel;
     public GameObject theTipsPanel;
+
+    public Image orderGraySprite;
+    public Image orderShowSprite;
+    public Image randomGraySprite;
+    public Image randomShowSprite;
+    public Image ghostGraySprite;
+    public Image ghostShowSprite;
+    public Image skeletonGraySprite;
+    public Image skeletonShowSprite;
+
     public Text diamondText;
 
     public static bool isRandMode = false;
@@ -51,27 +61,19 @@ public class StartGame : MonoBehaviour
                 diamondText.text = "0";
             }
         }
+
+        Init();
+    }
+
+    public void Init()
+    {
+        RefreshModeShow();
     }
 
     void Update()
     {
         GameData.Instance.diamonds = PlayerPrefs.GetInt("Diamonds");
         diamondText.text = GameData.Instance.diamonds.ToString();
-    }
-
-    public void RandomModeStartClick()
-    {
-        GameData.Instance.curStageState = StageState.RandomState;
-        int nowDiamonds = PlayerPrefs.GetInt("Diamonds");
-        if (nowDiamonds >= 3)
-        {
-            StartLoadMainScenes();
-            isRandMode = true;
-        }
-        else{
-            theTipsPanel.SetActive(true);
-            theTipsPanel.GetComponent<TipsPanel>().Apply(nowDiamonds,3);
-        }
     }
 
 
@@ -89,6 +91,110 @@ public class StartGame : MonoBehaviour
             theTipsPanel.SetActive(true);
             theTipsPanel.GetComponent<TipsPanel>().Apply(nowDiamonds, 1);
         }
+    }
+
+
+    public void RandomModeStartClick()
+    {
+        GameData.Instance.curStageState = StageState.RandomState;
+        int nowDiamonds = PlayerPrefs.GetInt("Diamonds");
+        if (nowDiamonds >= 3)
+        {
+            StartLoadMainScenes();
+            isRandMode = true;
+        }
+        else{
+            theTipsPanel.SetActive(true);
+            theTipsPanel.GetComponent<TipsPanel>().Apply(nowDiamonds,3);
+        }
+    }
+
+
+
+    public void GhostModeStartClick()
+    {
+        GameData.Instance.curStageState = StageState.GhostState;
+        int nowDiamonds = PlayerPrefs.GetInt("Diamonds");
+        if (nowDiamonds >= 5)
+        {
+            StartLoadMainScenes();
+        }
+        else
+        {
+            theTipsPanel.SetActive(true);
+            theTipsPanel.GetComponent<TipsPanel>().Apply(nowDiamonds, 5);
+        }
+    }
+
+
+    public void SkeletonModeStartClick()
+    {
+        GameData.Instance.curStageState = StageState.GhostState;
+        int nowDiamonds = PlayerPrefs.GetInt("Diamonds");
+        if (nowDiamonds >= 10)
+        {
+            StartLoadMainScenes();
+        }
+        else
+        {
+            theTipsPanel.SetActive(true);
+            theTipsPanel.GetComponent<TipsPanel>().Apply(nowDiamonds, 10);
+        }
+    }
+
+    //刷新模式选择显示
+    public void RefreshModeShow()
+    {
+        int sumDiamonds = PlayerPrefs.GetInt("Diamonds");
+        if (sumDiamonds >= 10)
+        {
+            orderGraySprite.gameObject.SetActive(false);
+            randomGraySprite.gameObject.SetActive(false);
+            ghostGraySprite.gameObject.SetActive(false);
+            skeletonGraySprite.gameObject.SetActive(false);
+
+            orderShowSprite.gameObject.SetActive(true);
+            randomShowSprite.gameObject.SetActive(true);
+            ghostShowSprite.gameObject.SetActive(true);
+            skeletonShowSprite.gameObject.SetActive(true);
+        }
+        else if (sumDiamonds >= 5 && sumDiamonds < 10)
+        {
+            orderGraySprite.gameObject.SetActive(false);
+            randomGraySprite.gameObject.SetActive(false);
+            ghostGraySprite.gameObject.SetActive(false);
+            skeletonGraySprite.gameObject.SetActive(true);
+
+            orderShowSprite.gameObject.SetActive(true);
+            randomShowSprite.gameObject.SetActive(true);
+            ghostShowSprite.gameObject.SetActive(true);
+            skeletonShowSprite.gameObject.SetActive(false);
+        }
+        else if (sumDiamonds >= 3 && sumDiamonds < 5)
+        {
+            orderGraySprite.gameObject.SetActive(false);
+            randomGraySprite.gameObject.SetActive(false);
+            ghostGraySprite.gameObject.SetActive(true);
+            skeletonGraySprite.gameObject.SetActive(true);
+
+            orderShowSprite.gameObject.SetActive(true);
+            randomShowSprite.gameObject.SetActive(true);
+            ghostShowSprite.gameObject.SetActive(false);
+            skeletonShowSprite.gameObject.SetActive(false);
+        }
+        else if (sumDiamonds >= 1 && sumDiamonds < 3)
+        {
+            orderGraySprite.gameObject.SetActive(false);
+            randomGraySprite.gameObject.SetActive(true);
+            ghostGraySprite.gameObject.SetActive(true);
+            skeletonGraySprite.gameObject.SetActive(true);
+
+            orderShowSprite.gameObject.SetActive(true);
+            randomShowSprite.gameObject.SetActive(false);
+            ghostShowSprite.gameObject.SetActive(false);
+            skeletonShowSprite.gameObject.SetActive(false);
+        }
+
     }
 
 
