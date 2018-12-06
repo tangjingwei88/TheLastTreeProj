@@ -630,9 +630,9 @@ public class GamePanel : MonoBehaviour {
         switch(GameData.Instance.curStageState)
         {
             case StageState.OrderState:
-                return 3;
-            case StageState.RandomState:
                 return 2;
+            case StageState.RandomState:
+                return 1;
             case StageState.GhostState:
                 return 1;
             case StageState.SkeletonState:

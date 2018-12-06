@@ -9,7 +9,7 @@ public class RechargeItem : MonoBehaviour {
         Debug.LogError("RechargeItem6Click");
         //IOSIAPMgr.BuyProductById("tsoft_y_6");
 #if UNITY_EDITOR || UNITY_ANDROID
-        IOSIAPMgr.Instance.AddPurchaseDiamonds(20);
+        IOSIAPMgr.Instance.AddPurchaseDiamonds(59);
 #endif
     }
 
@@ -18,7 +18,7 @@ public class RechargeItem : MonoBehaviour {
         Debug.LogError("RechargeItem12Click");
         //IOSIAPMgr.BuyProductById("tsoft_y_6");
 #if UNITY_EDITOR || UNITY_ANDROID
-        IOSIAPMgr.Instance.AddPurchaseDiamonds(50);
+        IOSIAPMgr.Instance.AddPurchaseDiamonds(149);
 #endif
     }
 
@@ -27,7 +27,7 @@ public class RechargeItem : MonoBehaviour {
         Debug.LogError("RechargeItem24Click");
         //IOSIAPMgr.BuyProductById("tsoft_y_6");
 #if UNITY_EDITOR || UNITY_ANDROID
-        IOSIAPMgr.Instance.AddPurchaseDiamonds(120);
+        IOSIAPMgr.Instance.AddPurchaseDiamonds(399);
 #endif
     }
 
@@ -36,7 +36,7 @@ public class RechargeItem : MonoBehaviour {
         Debug.LogError("RechargeItem49Click");
         //IOSIAPMgr.BuyProductById("tsoft_y_6");
 #if UNITY_EDITOR || UNITY_ANDROID
-        IOSIAPMgr.Instance.AddPurchaseDiamonds(299);
+        IOSIAPMgr.Instance.AddPurchaseDiamonds(999);
 #endif
     }
 
@@ -45,7 +45,7 @@ public class RechargeItem : MonoBehaviour {
         Debug.LogError("RechargeItem99Click");
         //IOSIAPMgr.BuyProductById("tsoft_y_6");
 #if UNITY_EDITOR || UNITY_ANDROID
-        IOSIAPMgr.Instance.AddPurchaseDiamonds(699);
+        IOSIAPMgr.Instance.AddPurchaseDiamonds(1999);
 #endif
     }
 
@@ -54,7 +54,7 @@ public class RechargeItem : MonoBehaviour {
         Debug.LogError("RechargeItem168Click");
         //IOSIAPMgr.BuyProductById("tsoft_y_6");
 #if UNITY_EDITOR || UNITY_ANDROID
-        IOSIAPMgr.Instance.AddPurchaseDiamonds(1500);
+        IOSIAPMgr.Instance.AddPurchaseDiamonds(4999);
 #endif
     }
 }

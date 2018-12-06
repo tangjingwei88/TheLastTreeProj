@@ -13,11 +13,11 @@ public class GameOverPanel : MonoBehaviour {
         this.gameObject.SetActive(true);
         if (GameData.Instance.curStageState == StageState.OrderState)
         {
-            int diam = (GameData.Instance.passedStageNum - 1) / 3;
+            int diam = (GameData.Instance.passedStageNum - 1) / 2;
             if (diam >= 1)
             {
-                GameData.Instance.diamonds += diam * 3;
-                diamText.text = " + " + diam * 3;
+                GameData.Instance.diamonds += diam * 2;
+                diamText.text = " + " + diam * 2;
             }
             else
             {
@@ -28,7 +28,7 @@ public class GameOverPanel : MonoBehaviour {
         }
         else if (GameData.Instance.curStageState == StageState.RandomState)
         {
-            int diam = (GameData.Instance.passedStageNum-1) / 2;
+            int diam = (GameData.Instance.passedStageNum-1) / 1;
             if(diam >= 1)
             {
                 GameData.Instance.diamonds += diam * 5;
