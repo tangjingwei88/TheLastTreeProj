@@ -40,7 +40,7 @@ public class GameOverPanel : MonoBehaviour {
         }
         else if (GameData.Instance.curStageState == StageState.GhostState)
         {
-            int diam = (GameData.Instance.passedStageNum - 1) / 2;
+            int diam = (GameData.Instance.passedStageNum - 1) / 1;
             if (diam >= 1)
             {
                 GameData.Instance.diamonds += diam * 10;
@@ -54,7 +54,7 @@ public class GameOverPanel : MonoBehaviour {
         }
         else if (GameData.Instance.curStageState == StageState.SkeletonState)
         {
-            int diam = (GameData.Instance.passedStageNum - 1) / 2;
+            int diam = (GameData.Instance.passedStageNum - 1) / 1;
             if (diam >= 1)
             {
                 GameData.Instance.diamonds += diam * 20;

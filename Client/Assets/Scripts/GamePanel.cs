@@ -95,6 +95,7 @@ public class GamePanel : MonoBehaviour {
     {
         protectBtn.transform.localPosition = new Vector3(0,-150,0);
         CreatePubbleItem();
+       // CreateProtectFollower();
         Apply();
     }
 
@@ -152,13 +153,13 @@ public class GamePanel : MonoBehaviour {
             else if (GameData.Instance.curStageState == StageState.RandomState)
             {
                 //random
-                int stageRandom = Random.Range(8, StageConfigManager.stageConfigList.Count);
+                int stageRandom = Random.Range(8, 27);
                 cf = StageConfigManager.GetStageConfig(stageRandom);
             }
             else if (GameData.Instance.curStageState == StageState.GhostState)
             {
                 //Ghost
-                int stageRandom = Random.Range(18, StageConfigManager.stageConfigList.Count);
+                int stageRandom = Random.Range(18, 35);
                 cf = StageConfigManager.GetStageConfig(stageRandom);
             }
             else if (GameData.Instance.curStageState == StageState.SkeletonState)
@@ -577,14 +578,34 @@ public class GamePanel : MonoBehaviour {
         num++;
         Object obj;
         obj = Resources.Load(GameDefine.UIPrefabPath + "PubbleItem");
-
-        GameObject item = Instantiate((GameObject)obj);
-        item.name += num;
-        item.SetActive(true);
-        item.transform.parent = protectBtn.transform.parent;
-        item.transform.localPosition = new Vector3(protectBtn.GetComponent<RectTransform>().localPosition.x, protectBtn.GetComponent<RectTransform>().localPosition.y -200, 0);
-        item.transform.localScale = Vector3.one;
+        if (obj != null)
+        {
+            GameObject item = Instantiate((GameObject)obj);
+            item.name += num;
+            item.SetActive(true);
+            item.transform.parent = protectBtn.transform.parent;
+            item.transform.localPosition = new Vector3(protectBtn.GetComponent<RectTransform>().localPosition.x, protectBtn.GetComponent<RectTransform>().localPosition.y - 200, 0);
+            item.transform.localScale = Vector3.one;
+        }
     }
+
+    //生成太极随从
+    public void CreateProtectFollower()
+    {
+        num++;
+        Object obj;
+        obj = Resources.Load(GameDefine.UIPrefabPath + "protectFollower");
+        if (obj != null)
+        {
+            GameObject item = Instantiate((GameObject)obj);
+            item.name += num;
+            item.SetActive(true);
+            item.transform.parent = protectBtn.transform.parent;
+            item.transform.localPosition = new Vector3(protectBtn.GetComponent<RectTransform>().localPosition.x + 200, protectBtn.GetComponent<RectTransform>().localPosition.y, 0);
+            item.transform.localScale = Vector3.one / 2;
+        }
+    }
+
 
     //生成炸弹
     public void CreateBoom()
@@ -609,13 +630,13 @@ public class GamePanel : MonoBehaviour {
         switch(GameData.Instance.curStageState)
         {
             case StageState.OrderState:
-                return 4;
-            case StageState.RandomState:
                 return 3;
+            case StageState.RandomState:
+                return 2;
             case StageState.GhostState:
-                return 2;
+                return 1;
             case StageState.SkeletonState:
-                return 2;
+                return 1;
             default:
                 return -1;
         }
