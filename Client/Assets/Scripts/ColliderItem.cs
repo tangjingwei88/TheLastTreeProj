@@ -18,7 +18,10 @@ public class ColliderItem : MonoBehaviour {
             if (transform.gameObject.name.Contains("boom"))
             {
                 //机器震动效果
-                Handheld.Vibrate();
+                if (GameData.Instance.isShake)
+                {
+                    Handheld.Vibrate();
+                }
                 StartCoroutine(BoomSelf(this.gameObject));
             }
             //碰撞有穿透问题，目前引擎没有方法解决，给碰撞体添加相反的力模拟碰撞

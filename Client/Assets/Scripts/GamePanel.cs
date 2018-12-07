@@ -9,6 +9,7 @@ public class GamePanel : MonoBehaviour {
     public GameOverPanel theGameOverPanel;
 
     public GameObject protectBtn;
+    public GameObject protectBtn2;
     public GameObject tree;
     public Text stageLabel;
     public Text stageNumLabel;
@@ -95,7 +96,7 @@ public class GamePanel : MonoBehaviour {
     {
         protectBtn.transform.localPosition = new Vector3(0,-150,0);
         CreatePubbleItem();
-       // CreateProtectFollower();
+        InitProtectBtn();
         Apply();
     }
 
@@ -590,19 +591,27 @@ public class GamePanel : MonoBehaviour {
     }
 
     //生成太极随从
-    public void CreateProtectFollower()
+    public void InitProtectBtn()
     {
-        num++;
-        Object obj;
-        obj = Resources.Load(GameDefine.UIPrefabPath + "protectFollower");
-        if (obj != null)
+        if (GameData.Instance.curStageState == StageState.OrderState)
         {
-            GameObject item = Instantiate((GameObject)obj);
-            item.name += num;
-            item.SetActive(true);
-            item.transform.parent = protectBtn.transform.parent;
-            item.transform.localPosition = new Vector3(protectBtn.GetComponent<RectTransform>().localPosition.x + 200, protectBtn.GetComponent<RectTransform>().localPosition.y, 0);
-            item.transform.localScale = Vector3.one / 2;
+            protectBtn.SetActive(true);
+            protectBtn.SetActive(false);
+        }
+        else if (GameData.Instance.curStageState == StageState.RandomState)
+        {
+            protectBtn.SetActive(true);
+            protectBtn.SetActive(false);
+        }
+        else if (GameData.Instance.curStageState == StageState.GhostState)
+        {
+            protectBtn.SetActive(true);
+            protectBtn.SetActive(true);
+        }
+        else if (GameData.Instance.curStageState == StageState.SkeletonState)
+        {
+            protectBtn.SetActive(true);
+            protectBtn.SetActive(true);
         }
     }
 
@@ -671,7 +680,10 @@ public class GamePanel : MonoBehaviour {
         for (int i = 0; i < GameData.Instance.colliderList.Count; i++)
         {
             //机器震动效果
-            Handheld.Vibrate();
+            if (GameData.Instance.isShake)
+            {
+                Handheld.Vibrate();
+            }
             if (GameData.Instance.colliderList[i] != null && 
                 !GameData.Instance.colliderList[i].gameObject.name.Contains("Group")
                 )

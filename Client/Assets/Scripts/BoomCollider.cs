@@ -9,7 +9,10 @@ public class BoomCollider : MonoBehaviour {
         if (collision.transform.tag == "protect")
         {
             //机器震动效果
-            Handheld.Vibrate();
+            if (GameData.Instance.isShake)
+            {
+                Handheld.Vibrate();
+            }
             ScreenShake.isshakeCamera = true;
             StartCoroutine(DestorySelf());
         }

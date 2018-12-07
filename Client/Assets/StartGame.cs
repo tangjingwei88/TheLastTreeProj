@@ -143,6 +143,17 @@ public class StartGame : MonoBehaviour
         }
     }
 
+    public void OpenCloseShake()
+    {
+        if (GameData.Instance.isShake)
+        {
+            GameData.Instance.isShake = false;
+        }
+        else {
+            GameData.Instance.isShake = true;
+        }
+    }
+
     //刷新模式选择显示
     public void RefreshModeShow()
     {

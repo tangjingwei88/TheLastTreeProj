@@ -5,6 +5,7 @@ using UnityEngine;
 public class GameData : MonoBehaviour {
 
     public bool isLost = false;
+    public bool isShake = true;
 
     public float protectPower = 0;
     public float protectRotateSpeed = 0;
