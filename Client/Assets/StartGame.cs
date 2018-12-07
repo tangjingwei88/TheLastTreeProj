@@ -10,6 +10,8 @@ public class StartGame : MonoBehaviour
     public GameObject theRechargePanel;
     public GameObject theTipsPanel;
 
+    public Image ZDCloseSprite;
+
     public Image orderGraySprite;
     public Image orderShowSprite;
     public Image randomGraySprite;
@@ -18,6 +20,8 @@ public class StartGame : MonoBehaviour
     public Image ghostShowSprite;
     public Image skeletonGraySprite;
     public Image skeletonShowSprite;
+
+
 
     public Text diamondText;
 
@@ -38,7 +42,7 @@ public class StartGame : MonoBehaviour
     }
     void Awake()
     {
-        Debug.LogError("@@StartGame.awake");
+       // Debug.LogError("@@StartGame.awake");
 #if !UNITY_EDITOR && UNITY_IOS
         IOSIAPMgr.Instance.Init();
 #endif
@@ -148,9 +152,11 @@ public class StartGame : MonoBehaviour
         if (GameData.Instance.isShake)
         {
             GameData.Instance.isShake = false;
+            ZDCloseSprite.gameObject.SetActive(false);
         }
         else {
             GameData.Instance.isShake = true;
+            ZDCloseSprite.gameObject.SetActive(true);
         }
     }
 
