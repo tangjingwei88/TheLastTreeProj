@@ -21,8 +21,6 @@ public class StartGame : MonoBehaviour
     public Image skeletonGraySprite;
     public Image skeletonShowSprite;
 
-
-
     public Text diamondText;
 
     public static bool isRandMode = false;
@@ -42,7 +40,7 @@ public class StartGame : MonoBehaviour
     }
     void Awake()
     {
-       // Debug.LogError("@@StartGame.awake");
+        Debug.LogError("@@StartGame.awake");
 #if !UNITY_EDITOR && UNITY_IOS
         IOSIAPMgr.Instance.Init();
 #endif
@@ -72,6 +70,14 @@ public class StartGame : MonoBehaviour
     public void Init()
     {
         RefreshModeShow();
+        if (GameData.Instance.isShake)
+        {
+            ZDCloseSprite.gameObject.SetActive(true);
+        }
+        else 
+        {
+            ZDCloseSprite.gameObject.SetActive(false);
+        }
     }
 
     void Update()
@@ -150,13 +156,15 @@ public class StartGame : MonoBehaviour
     public void OpenCloseShake()
     {
         if (GameData.Instance.isShake)
-        {
+        {//设为不震动
             GameData.Instance.isShake = false;
             ZDCloseSprite.gameObject.SetActive(false);
+            PlayerPrefs.SetString("Shake", "false");
         }
-        else {
+        else {//设为震动
             GameData.Instance.isShake = true;
             ZDCloseSprite.gameObject.SetActive(true);
+            PlayerPrefs.SetString("Shake", "true");
         }
     }
 
