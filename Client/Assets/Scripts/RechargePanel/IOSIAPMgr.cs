@@ -45,10 +45,10 @@ public class IOSIAPMgr : MonoBehaviour
 	private static extern void RequstProductInfo(string s);//获取商品信息
 	
 	[DllImport("__Internal")]
-	private static extern void BuyProduct(string s);//购买商品
+	private static extern void BuyProduct(int id);//购买商品
 
 
-	public static void BuyProductById(string mOrderId)
+	public void BuyProductById(int mOrderId)
 	{
 		Debug.LogError("@@mOrderId: "+mOrderId);
 		BuyProduct(mOrderId);
@@ -62,7 +62,8 @@ public class IOSIAPMgr : MonoBehaviour
 	//获取product列表
 	void ShowProductList(string s){
 		productInfo.Add(s);
-	}
+        Debug.LogError("@@ShowProductListk : " + s);
+    }
 	
 	//获取商品回执
 	void ProvideContent(string s)
@@ -87,16 +88,14 @@ public class IOSIAPMgr : MonoBehaviour
 	{
 		if(IsProductAvailable())
 		{
-			RequstProductInfo("com.smallMBag");
-			RequstProductInfo("com.MidMBag");
-			RequstProductInfo("com.BigMBag");
+			RequstProductInfo("tsoft_protecter_1001");
+			RequstProductInfo("tsoft_protecter_1002");
+			RequstProductInfo("tsoft_protecter_1003");
 			
-			RequstProductInfo("com.SpecialM");
-			RequstProductInfo("com.SmallFBag");
-			RequstProductInfo("com.Weapon");
-			//RequstProductInfo("com.SingleFuHuoSHi");
-			
-			RequstProductInfo("com.BigFBag");
+			RequstProductInfo("tsoft_protecter_1004");
+			RequstProductInfo("tsoft_protecter_1005");
+			RequstProductInfo("tsoft_protecter_1006");
+
 		}
 		
 	}
@@ -107,19 +106,19 @@ public class IOSIAPMgr : MonoBehaviour
 	/// <param name="str">String.</param>
 	public void BuyProcuctSucessCallBack(string str)
 	{
-		
-		
-		
-		
-	}
+        Debug.LogError("@@BuyProcuctSucessCallBack : " + str);
+
+
+
+    }
 	/// <summary>
 	/// 购买商品失败调回调
 	/// </summary>
 	/// <param name="str">String.</param>
 	public void BuyProcuctFailedCallBack(string str)
 	{
-		
-	}
+        Debug.LogError("@@BuyProcuctFailedCallBack : " + str);
+    }
 
 
     public void AddPurchaseDiamonds(int diamondNum)
