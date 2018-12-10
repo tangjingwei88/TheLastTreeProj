@@ -107,7 +107,30 @@ public class IOSIAPMgr : MonoBehaviour
 	public void BuyProcuctSucessCallBack(string str)
 	{
         Debug.LogError("@@BuyProcuctSucessCallBack : " + str);
-
+        if (str == "")
+        {
+            AddPurchaseDiamonds(59);
+        }
+        else if (str == "")
+        {
+            AddPurchaseDiamonds(149);
+        }
+        else if (str == "")
+        {
+            AddPurchaseDiamonds(399);
+        }
+        else if (str == "")
+        {
+            AddPurchaseDiamonds(149);
+        }
+        else if (str == "")
+        {
+            AddPurchaseDiamonds(149);
+        }
+        else if (str == "")
+        {
+            AddPurchaseDiamonds(149);
+        }
 
 
     }
