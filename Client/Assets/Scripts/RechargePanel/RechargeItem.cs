@@ -11,7 +11,7 @@ public class RechargeItem : MonoBehaviour {
 #if UNITY_EDITOR || UNITY_ANDROID
       IOSIAPMgr.Instance.AddPurchaseDiamonds(59);
 #else
-        IOSIAPMgr.Instance.BuyProductById(1001);
+        ChannelIOSAPI.BuyProductById(1001);
 #endif
     }
 
@@ -22,7 +22,7 @@ public class RechargeItem : MonoBehaviour {
 #if UNITY_EDITOR || UNITY_ANDROID
         IOSIAPMgr.Instance.AddPurchaseDiamonds(149);
 #else
-        IOSIAPMgr.Instance.BuyProductById(1002);
+        ChannelIOSAPI.BuyProductById(1002);
 #endif
     }
 
@@ -33,7 +33,7 @@ public class RechargeItem : MonoBehaviour {
 #if UNITY_EDITOR || UNITY_ANDROID
         IOSIAPMgr.Instance.AddPurchaseDiamonds(399);
 #else
-        IOSIAPMgr.Instance.BuyProductById(1003);
+        ChannelIOSAPI.BuyProductById(1003);
 #endif
     }
 
@@ -44,7 +44,7 @@ public class RechargeItem : MonoBehaviour {
 #if UNITY_EDITOR || UNITY_ANDROID
         IOSIAPMgr.Instance.AddPurchaseDiamonds(999);
 #else
-        IOSIAPMgr.Instance.BuyProductById(1004);
+        ChannelIOSAPI.BuyProductById(1004);
 #endif
     }
 
@@ -55,7 +55,7 @@ public class RechargeItem : MonoBehaviour {
 #if UNITY_EDITOR || UNITY_ANDROID
         IOSIAPMgr.Instance.AddPurchaseDiamonds(1999);
 #else
-        IOSIAPMgr.Instance.BuyProductById(1005);
+        ChannelIOSAPI.BuyProductById(1005);
 #endif
     }
 
@@ -66,7 +66,7 @@ public class RechargeItem : MonoBehaviour {
 #if UNITY_EDITOR || UNITY_ANDROID
         IOSIAPMgr.Instance.AddPurchaseDiamonds(4999);
 #else
-        IOSIAPMgr.Instance.BuyProductById(1006);
+        ChannelIOSAPI.BuyProductById(1006);
 #endif
     }
 }
