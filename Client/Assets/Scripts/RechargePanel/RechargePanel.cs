@@ -1,12 +1,58 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class RechargePanel : MonoBehaviour {
 
     public GameObject CloseBtn;
+    public Text price01Text;
+    public Text price02Text;
+    public Text price03Text;
+    public Text price04Text;
+    public Text price05Text;
+    public Text price06Text;
 
 
+    public void ApplyInfo(string backMsg)
+    {
+        ApplyPriceInfo(backMsg);
+    }
+
+    public void ApplyPriceInfo(string info)
+    {
+        string[] strList = info.Split('|');
+        string mProductId = strList[0];
+        string mPrice = strList[1];
+
+        Debug.LogError("@@mProductId: " + mProductId);
+        Debug.LogError("@@mPrice: " + mProductId);
+
+        if (mProductId == "tsoft_protecter_1001")
+        {
+            price01Text.text = mPrice.ToString();
+        }
+        else if (mProductId == "tsoft_protecter_1002")
+        {
+            price02Text.text = mPrice.ToString();
+        }
+        else if (mProductId == "tsoft_protecter_1003")
+        {
+            price03Text.text = mPrice.ToString();
+        }
+        else if (mProductId == "tsoft_protecter_1004")
+        {
+            price04Text.text = mPrice.ToString();
+        }
+        else if (mProductId == "tsoft_protecter_1005")
+        {
+            price05Text.text = mPrice.ToString();
+        }
+        else if (mProductId == "tsoft_protecter_1006")
+        {
+            price06Text.text = mPrice.ToString();
+        }
+    }
 
     public void CloseBtnClick()
     {

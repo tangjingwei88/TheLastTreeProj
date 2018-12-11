@@ -5,9 +5,10 @@ using UnityEngine;
 public class ChannelIOSReceiver : MonoBehaviour {
 
     //获取product列表
-    public void ShowProductList(string s)
+    public void ShowProductList(string backMsg)
     {
-        Debug.LogError("@@ShowProductListk : " + s);
+        Debug.LogError("@@backMsg : " + backMsg);
+        StartGame.Instance.theRechargePanel.GetComponent<RechargePanel>().ApplyInfo(backMsg);
     }
 
 

@@ -20,7 +20,7 @@ public class ChannelIOSAPI{
     {
         Init();
         //StartCoroutine(InitProductInfo());
-       // DontDestroyOnLoad(this.gameObject);
+        //DontDestroyOnLoad(this.gameObject);
     }
 
     private IEnumerator InitProductInfo()
@@ -34,7 +34,8 @@ public class ChannelIOSAPI{
     {
         Debug.Log("初始化InitIAPManager");
 #if UNITY_IOS && !UNITY_EDITOR
-        InitIAPManager();
+        //InitIAPManager();
+        RequstALLProductInfo();
 #endif
 
     }

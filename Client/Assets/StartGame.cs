@@ -6,7 +6,6 @@ using UnityEngine.UI;
 
 public class StartGame : MonoBehaviour
 {
-
     public GameObject theRechargePanel;
     public GameObject theTipsPanel;
 
@@ -40,11 +39,12 @@ public class StartGame : MonoBehaviour
     }
     void Awake()
     {
+        Debug.LogError("@@@Newr:" + PlayerPrefs.GetString("Newr"));
         Debug.LogError("@@StartGame.awake");
 #if !UNITY_EDITOR && UNITY_IOS
         IOSIAPMgr.Instance.Init();
 #endif
-        if (PlayerPrefs.GetString("NewPlayer") == null)
+        if (PlayerPrefs.GetString("NewPlayer") != "false")
         {
             PlayerPrefs.SetInt("Diamonds", 20);
             PlayerPrefs.SetString("NewPlayer", "false");
@@ -244,6 +244,7 @@ public class StartGame : MonoBehaviour
     public void RechargeBtnClick()
     {
         theRechargePanel.gameObject.SetActive(true);
+        ChannelIOSAPI.RequstALLProductInfo();
     }
 
 
