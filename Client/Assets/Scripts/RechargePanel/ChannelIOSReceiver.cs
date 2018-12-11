@@ -25,31 +25,30 @@ public class ChannelIOSReceiver : MonoBehaviour {
     public void BuyProcuctSucessCallBack(string str)
     {
         Debug.LogError("@@BuyProcuctSucessCallBack : " + str);
-        if (str == "")
+        if (str == "tsoft_protecter_1001")
         {
             AddPurchaseDiamonds(59);
         }
-        else if (str == "")
+        else if (str == "tsoft_protecter_1002")
         {
             AddPurchaseDiamonds(149);
         }
-        else if (str == "")
+        else if (str == "tsoft_protecter_1003")
         {
             AddPurchaseDiamonds(399);
         }
-        else if (str == "")
+        else if (str == "tsoft_protecter_1004")
         {
-            AddPurchaseDiamonds(149);
+            AddPurchaseDiamonds(999);
         }
-        else if (str == "")
+        else if (str == "tsoft_protecter_1005")
         {
-            AddPurchaseDiamonds(149);
+            AddPurchaseDiamonds(1999);
         }
-        else if (str == "")
+        else if (str == "tsoft_protecter_1006")
         {
-            AddPurchaseDiamonds(149);
+            AddPurchaseDiamonds(4999);
         }
-
 
     }
     /// <summary>
