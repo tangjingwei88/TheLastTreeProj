@@ -35,7 +35,7 @@ public class ChannelIOSAPI{
         Debug.Log("初始化InitIAPManager");
 #if UNITY_IOS && !UNITY_EDITOR
         //InitIAPManager();
-        RequstALLProductInfo();
+        //RequstALLProductInfo();
 #endif
 
     }
@@ -58,7 +58,6 @@ public class ChannelIOSAPI{
             RequstProductInfo("tsoft_protecter_1004");
             RequstProductInfo("tsoft_protecter_1005");
             RequstProductInfo("tsoft_protecter_1006");
-
         }
 
     }

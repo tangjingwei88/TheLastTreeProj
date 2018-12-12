@@ -8,7 +8,7 @@ public class ChannelIOSReceiver : MonoBehaviour {
     public void ShowProductList(string backMsg)
     {
         Debug.LogError("@@backMsg : " + backMsg);
-        StartGame.Instance.theRechargePanel.GetComponent<RechargePanel>().ApplyInfo(backMsg);
+        StartGame.Instance.SetRechargePrice(backMsg);
     }
 
 

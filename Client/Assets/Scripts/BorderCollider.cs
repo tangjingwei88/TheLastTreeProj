@@ -14,7 +14,7 @@ public class BorderCollider : MonoBehaviour {
 
             Vector3 direct = collPos - borderPos;
             //transform.GetComponent<Rigidbody2D>().AddForce(new Vector2(direct.x*10,direct.y*10));
-            collision.gameObject.transform.GetComponent<Rigidbody2D>().AddForce(new Vector2(direct.x * GameData.Instance.protectPower/3, direct.y * GameData.Instance.protectPower/3));
+            collision.gameObject.transform.GetComponent<Rigidbody2D>().AddForce(new Vector2(direct.x * GameData.Instance.protectPower/4, direct.y * GameData.Instance.protectPower/4));
 
         }
 

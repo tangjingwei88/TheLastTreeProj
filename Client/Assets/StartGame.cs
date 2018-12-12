@@ -247,6 +247,10 @@ public class StartGame : MonoBehaviour
         ChannelIOSAPI.RequstALLProductInfo();
     }
 
+    public void SetRechargePrice(string info)
+    {
+        theRechargePanel.GetComponent<RechargePanel>().ApplyInfo(info);
+    }
 
     public void CleanDiamonds()
     {
