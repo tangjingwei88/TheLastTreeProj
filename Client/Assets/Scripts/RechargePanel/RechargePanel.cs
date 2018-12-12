@@ -13,10 +13,23 @@ public class RechargePanel : MonoBehaviour {
     public Text price05Text;
     public Text price06Text;
 
-
-    public void ApplyInfo(string backMsg)
+    void Awake()
     {
-        ApplyPriceInfo(backMsg);
+        Debug.LogError("@@RechargePanel.Awake!!");
+        ApplyInfo();
+    }
+
+    public void ApplyInfo()
+    {
+        string[] priceList = GameData.Instance.allPirceStr.Split(';');
+        for (int i = 0; i < priceList.Length; i++)
+        {
+            if (priceList[i] != null)
+            {
+                Debug.LogError("@@pirceList[i]: " + priceList[i]);
+                ApplyPriceInfo(priceList[i]);
+            }
+        }
     }
 
     public void ApplyPriceInfo(string info)

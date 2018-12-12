@@ -6,7 +6,7 @@ using UnityEngine.UI;
 
 public class StartGame : MonoBehaviour
 {
-    public GameObject theRechargePanel;
+    public RechargePanel theRechargePanel;
     public GameObject theTipsPanel;
 
     public Image ZDCloseSprite;
@@ -65,6 +65,7 @@ public class StartGame : MonoBehaviour
         }
 
         Init();
+        ChannelIOSAPI.RequstALLProductInfo();
     }
 
     public void Init()
@@ -243,13 +244,14 @@ public class StartGame : MonoBehaviour
 
     public void RechargeBtnClick()
     {
+        //ChannelIOSAPI.RequstALLProductInfo();
         theRechargePanel.gameObject.SetActive(true);
-        ChannelIOSAPI.RequstALLProductInfo();
     }
 
     public void SetRechargePrice(string info)
     {
-        theRechargePanel.GetComponent<RechargePanel>().ApplyInfo(info);
+        Debug.LogError("@@#:" + theRechargePanel.gameObject.name);
+        theRechargePanel.gameObject.GetComponent<RechargePanel>().ApplyInfo();
     }
 
     public void CleanDiamonds()

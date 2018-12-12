@@ -19,6 +19,8 @@ public class GameData : MonoBehaviour {
 
     public StageState curStageState = StageState.OrderState;
 
+    public string allPirceStr = "";
+
     public Vector3 protectPos;
     public List<GameObject> colliderList = new List<GameObject>();
 
