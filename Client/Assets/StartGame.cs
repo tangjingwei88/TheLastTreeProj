@@ -10,6 +10,7 @@ public class StartGame : MonoBehaviour
     public GameObject theTipsPanel;
 
     public Image ZDCloseSprite;
+    public Image MusicCloseSprite;
 
     public Image orderGraySprite;
     public Image orderShowSprite;
@@ -78,6 +79,15 @@ public class StartGame : MonoBehaviour
         else 
         {
             ZDCloseSprite.gameObject.SetActive(false);
+        }
+
+        if (GameData.Instance.isMusic)
+        {
+            MusicCloseSprite.gameObject.SetActive(true);
+        }
+        else
+        {
+            MusicCloseSprite.gameObject.SetActive(false);
         }
     }
 
@@ -166,6 +176,23 @@ public class StartGame : MonoBehaviour
             GameData.Instance.isShake = true;
             ZDCloseSprite.gameObject.SetActive(true);
             PlayerPrefs.SetString("Shake", "true");
+        }
+    }
+
+
+    public void OpenCloseMusic()
+    {
+        if (GameData.Instance.isMusic)
+        {//关闭音乐
+            GameData.Instance.isMusic = false;
+            MusicCloseSprite.gameObject.SetActive(false);
+            PlayerPrefs.SetString("Music", "false");
+        }
+        else
+        {//开启音乐
+            GameData.Instance.isMusic = true;
+            MusicCloseSprite.gameObject.SetActive(true);
+            PlayerPrefs.SetString("Music", "true");
         }
     }
 
