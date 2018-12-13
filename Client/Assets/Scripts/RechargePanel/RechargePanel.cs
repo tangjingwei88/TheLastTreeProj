@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class RechargePanel : MonoBehaviour {
+public class RechargePanel : MonoBehaviour
+{
 
     public GameObject CloseBtn;
     public Text price01Text;
@@ -34,6 +35,7 @@ public class RechargePanel : MonoBehaviour {
 
     public void ApplyPriceInfo(string info)
     {
+#if UNITY_IOS
         string[] strList = info.Split('|');
         string mProductId = strList[0];
         string mPrice = strList[1];
@@ -65,7 +67,9 @@ public class RechargePanel : MonoBehaviour {
         {
             price06Text.text = mPrice.ToString();
         }
+#endif
     }
+
 
     public void CloseBtnClick()
     {

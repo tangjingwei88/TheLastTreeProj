@@ -8,7 +8,7 @@ public class ChannelIOSReceiver : MonoBehaviour {
     public void ShowProductList(string backMsg)
     {
         Debug.LogError("@@backMsg : " + backMsg);
-        GameData.Instance.allPirceStr = backMsg;
+        GameData.Instance.allPirceStr += backMsg;
         //StartGame.Instance.SetRechargePrice(backMsg);
     }
 

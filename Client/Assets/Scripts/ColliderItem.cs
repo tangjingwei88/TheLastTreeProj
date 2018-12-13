@@ -29,10 +29,14 @@ public class ColliderItem : MonoBehaviour {
             {
                 if (GameData.Instance.isMusic)
                 {
-                    AudioClip collideClip = (AudioClip)Resources.Load(GameDefine.AudioPath + GetAudioName(transform.gameObject.name));
+                    string audioStr = GameDefine.AudioPath + GetAudioName(transform.gameObject.name);
+                    Debug.LogError("audioStr: " + audioStr);
+                    AudioClip collideClip = Resources.Load(audioStr) as AudioClip;
+                    //Debug.LogError("collideClip: " + collideClip.name);
                     if (collideClip != null)
                     {
-                        AudioSource.PlayClipAtPoint(collideClip, transform.position);
+                        Debug.LogError("audio");
+                        AudioSource.PlayClipAtPoint(collideClip, Camera.main.transform.position);
                     }
                 }
                 //根据tag找到气球，获取位置
@@ -72,6 +76,7 @@ public class ColliderItem : MonoBehaviour {
     //根据prefab名字拿audio资源
     public string GetAudioName(string str)
     {
-        return str.Substring(0,2);
+        Debug.LogError("@@" + str.Substring(0,3));
+        return str.Substring(0,3);
     }
 }

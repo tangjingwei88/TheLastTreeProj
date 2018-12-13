@@ -3,7 +3,8 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Runtime.InteropServices;
 
-public class ChannelIOSAPI{
+public class ChannelIOSAPI
+{
     [DllImport("__Internal")]
     private static extern void InitIAPManager();//初始化
 
@@ -40,7 +41,7 @@ public class ChannelIOSAPI{
 
     }
 
-    public static  void BuyProductById(int mOrderId)
+    public static void BuyProductById(int mOrderId)
     {
         Debug.LogError("@@mOrderId: " + mOrderId);
         BuyProduct(mOrderId);
@@ -49,6 +50,7 @@ public class ChannelIOSAPI{
 
     public static void RequstALLProductInfo()
     {
+#if UNITY_IOS
         if (IsProductAvailable())
         {
             RequstProductInfo("tsoft_protecter_1001");
@@ -59,6 +61,6 @@ public class ChannelIOSAPI{
             RequstProductInfo("tsoft_protecter_1005");
             RequstProductInfo("tsoft_protecter_1006");
         }
-
+#endif
     }
 }
