@@ -50,9 +50,7 @@ public class ChannelIOSAPI
 
     public static void RequstALLProductInfo()
     {
-#if UNITY_IOS
-        if (IsProductAvailable())
-        {
+#if UNITY_IOS && !UNITY_EDITOR
             RequstProductInfo("tsoft_protecter_1001");
             RequstProductInfo("tsoft_protecter_1002");
             RequstProductInfo("tsoft_protecter_1003");
@@ -60,7 +58,6 @@ public class ChannelIOSAPI
             RequstProductInfo("tsoft_protecter_1004");
             RequstProductInfo("tsoft_protecter_1005");
             RequstProductInfo("tsoft_protecter_1006");
-        }
 #endif
     }
 }

@@ -297,8 +297,9 @@ public class StartGame : MonoBehaviour
 
     public void RechargeBtnClick()
     {
-        //ChannelIOSAPI.RequstALLProductInfo();
+        ChannelIOSAPI.RequstALLProductInfo();
         theRechargePanel.gameObject.SetActive(true);
+        theRechargePanel.gameObject.GetComponent<RechargePanel>().ApplyInfo();
     }
 
     public void SetRechargePrice(string info)

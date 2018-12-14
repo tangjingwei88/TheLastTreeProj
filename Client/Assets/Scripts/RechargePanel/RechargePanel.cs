@@ -22,17 +22,17 @@ public class RechargePanel : MonoBehaviour
     public void ApplyInfo()
     {
         string[] priceList = GameData.Instance.allPirceStr.Split(';');
-
+        Debug.LogError("@@priceList.Length: " + priceList.Length);
         //如果从appstore上没有拿到所有的商品价格信息，就直接隐藏价格显示
-        if (priceList.Length < 6)
+        if (priceList.Length-1 < 6)
         {
-            HidePriceText(true);
+            //HidePriceText(true);
 #if UNITY_IOS
             ChannelIOSAPI.RequstALLProductInfo();
 #endif
         }
         else {
-            HidePriceText(false);
+            //HidePriceText(false);
         }
 
         for (int i = 0; i < priceList.Length; i++)
@@ -47,7 +47,7 @@ public class RechargePanel : MonoBehaviour
 
     public void ApplyPriceInfo(string info)
     {
-#if UNITY_IOS
+#if UNITY_IOS && !UNITY_EDITOR
         string[] strList = info.Split('|');
         string mProductId = strList[0];
         string mPrice = strList[1];
