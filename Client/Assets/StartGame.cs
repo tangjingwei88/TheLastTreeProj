@@ -1,5 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.IO;
+using System.Text;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -40,8 +42,6 @@ public class StartGame : MonoBehaviour
     }
     void Awake()
     {
-        Debug.LogError("@@@Newr:" + PlayerPrefs.GetString("Newr"));
-        Debug.LogError("@@StartGame.awake");
 #if !UNITY_EDITOR && UNITY_IOS
         IOSIAPMgr.Instance.Init();
 #endif
@@ -96,6 +96,32 @@ public class StartGame : MonoBehaviour
         GameData.Instance.diamonds = PlayerPrefs.GetInt("Diamonds");
         diamondText.text = GameData.Instance.diamonds.ToString();
         RefreshModeShow();
+    }
+
+    public void ReadText()
+    {
+        string path = Application.dataPath + "/portecter/pro.txt";
+        //文件读写流
+        StreamReader sr = new StreamReader(path);
+        //读取内容
+        string result = sr.ReadToEnd();
+
+        PlayerPrefs.SetInt("Diamonds", int.Parse(result));
+        
+    }
+
+
+    public void WriteText(string str)
+    {
+        string path = Application.dataPath + "/portecter/pro.txt";
+        //文件流
+        FileStream fs = File.OpenWrite(path);
+
+        byte[] map = Encoding.UTF8.GetBytes(str);
+        fs.Write(map, 0, map.Length);
+
+        fs.Close();
+        fs.Dispose();
     }
 
 

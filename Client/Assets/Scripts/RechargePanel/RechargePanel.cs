@@ -16,18 +16,30 @@ public class RechargePanel : MonoBehaviour
 
     void Awake()
     {
-        Debug.LogError("@@RechargePanel.Awake!!");
         ApplyInfo();
     }
 
     public void ApplyInfo()
     {
         string[] priceList = GameData.Instance.allPirceStr.Split(';');
+
+        //如果从appstore上没有拿到所有的商品价格信息，就直接隐藏价格显示
+        if (priceList.Length < 6)
+        {
+            HidePriceText(true);
+#if UNITY_IOS
+            ChannelIOSAPI.RequstALLProductInfo();
+#endif
+        }
+        else {
+            HidePriceText(false);
+        }
+
         for (int i = 0; i < priceList.Length; i++)
         {
             if (priceList[i] != null)
             {
-                Debug.LogError("@@pirceList[i]: " + priceList[i]);
+                //Debug.LogError("@@pirceList[i]: " + priceList[i]);
                 ApplyPriceInfo(priceList[i]);
             }
         }
@@ -70,6 +82,27 @@ public class RechargePanel : MonoBehaviour
 #endif
     }
 
+
+    public void HidePriceText(bool hide)
+    {
+        if (hide)
+        {
+            price01Text.gameObject.SetActive(false);
+            price02Text.gameObject.SetActive(false);
+            price03Text.gameObject.SetActive(false);
+            price04Text.gameObject.SetActive(false);
+            price05Text.gameObject.SetActive(false);
+            price06Text.gameObject.SetActive(false);
+        }
+        else {
+            price01Text.gameObject.SetActive(true);
+            price02Text.gameObject.SetActive(true);
+            price03Text.gameObject.SetActive(true);
+            price04Text.gameObject.SetActive(true);
+            price05Text.gameObject.SetActive(true);
+            price06Text.gameObject.SetActive(true);
+        }
+    }
 
     public void CloseBtnClick()
     {
