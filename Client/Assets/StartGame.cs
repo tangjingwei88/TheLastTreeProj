@@ -71,7 +71,7 @@ public class StartGame : MonoBehaviour
 
     public void Init()
     {
-        ReadText();
+        //ReadText();
         RefreshModeShow();
         if (GameData.Instance.isShake)
         {
@@ -95,7 +95,7 @@ public class StartGame : MonoBehaviour
     void Update()
     {
         GameData.Instance.diamonds = PlayerPrefs.GetInt("Diamonds");
-        WriteText(GameData.Instance.diamonds.ToString());
+       // WriteText(GameData.Instance.diamonds.ToString());
         diamondText.text = GameData.Instance.diamonds.ToString();
         RefreshModeShow();
     }

@@ -77,6 +77,6 @@ public class ColliderItem : MonoBehaviour {
     public string GetAudioName(string str)
     {
         Debug.LogError("@@" + str.Substring(0,3));
-        return str.Substring(0,3);
+        return str.Substring(0,6);
     }
 }
