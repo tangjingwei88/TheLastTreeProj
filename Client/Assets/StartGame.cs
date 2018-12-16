@@ -71,6 +71,7 @@ public class StartGame : MonoBehaviour
 
     public void Init()
     {
+        ReadText();
         RefreshModeShow();
         if (GameData.Instance.isShake)
         {
@@ -94,6 +95,7 @@ public class StartGame : MonoBehaviour
     void Update()
     {
         GameData.Instance.diamonds = PlayerPrefs.GetInt("Diamonds");
+        WriteText(GameData.Instance.diamonds.ToString());
         diamondText.text = GameData.Instance.diamonds.ToString();
         RefreshModeShow();
     }
@@ -101,19 +103,28 @@ public class StartGame : MonoBehaviour
     public void ReadText()
     {
         string path = Application.dataPath + "/portecter/pro.txt";
-        //文件读写流
-        StreamReader sr = new StreamReader(path);
-        //读取内容
-        string result = sr.ReadToEnd();
+        if (!Directory.Exists(path))
+        {
+            Directory.CreateDirectory(path);
+        }
+        else
+        {
+            //文件读写流
+            StreamReader sr = new StreamReader(path);
+            //读取内容
+            string result = sr.ReadToEnd();
 
-        PlayerPrefs.SetInt("Diamonds", int.Parse(result));
-        
+            PlayerPrefs.SetInt("Diamonds", int.Parse(result));
+        }
     }
-
 
     public void WriteText(string str)
     {
         string path = Application.dataPath + "/portecter/pro.txt";
+        if (!Directory.Exists(path))
+        {
+            Directory.CreateDirectory(path);
+        }
         //文件流
         FileStream fs = File.OpenWrite(path);
 
@@ -122,6 +133,17 @@ public class StartGame : MonoBehaviour
 
         fs.Close();
         fs.Dispose();
+    }
+
+
+    public string CreateFolder(string path, string FolderName)
+    {
+        string FolderPath = path + FolderName;
+        if (!Directory.Exists(FolderPath))
+        {
+            Directory.CreateDirectory(FolderPath);
+        }
+        return FolderPath;
     }
 
 
