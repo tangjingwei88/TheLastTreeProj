@@ -106,6 +106,19 @@ public class RechargePanel : MonoBehaviour
 
     public void CloseBtnClick()
     {
+        PlayMusic("click");
         this.gameObject.SetActive(false);
+    }
+
+    public void PlayMusic(string name)
+    {
+        string audioStr = GameDefine.AudioPath + name;
+        Debug.LogError("audioStr: " + audioStr);
+        AudioClip collideClip = Resources.Load(audioStr) as AudioClip;
+        if (collideClip != null)
+        {
+            Debug.LogError("audio");
+            AudioSource.PlayClipAtPoint(collideClip, Camera.main.transform.position);
+        }
     }
 }

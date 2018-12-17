@@ -29,15 +29,7 @@ public class ColliderItem : MonoBehaviour {
             {
                 if (GameData.Instance.isMusic)
                 {
-                    string audioStr = GameDefine.AudioPath + GetAudioName(transform.gameObject.name);
-                    Debug.LogError("audioStr: " + audioStr);
-                    AudioClip collideClip = Resources.Load(audioStr) as AudioClip;
-                    //Debug.LogError("collideClip: " + collideClip.name);
-                    if (collideClip != null)
-                    {
-                        Debug.LogError("audio");
-                        AudioSource.PlayClipAtPoint(collideClip, Camera.main.transform.position);
-                    }
+                    PlayMusic(GetAudioName(transform.gameObject.name));
                 }
                 //根据tag找到气球，获取位置
                 GameObject tree = GameObject.FindGameObjectWithTag("tree");
@@ -64,11 +56,26 @@ public class ColliderItem : MonoBehaviour {
     }
 
 
+    public void PlayMusic(string name)
+    {
+        string audioStr = GameDefine.AudioPath + name;
+        Debug.LogError("audioStr: " + audioStr);
+        AudioClip collideClip = Resources.Load(audioStr) as AudioClip;
+        //Debug.LogError("collideClip: " + collideClip.name);
+        if (collideClip != null)
+        {
+            Debug.LogError("audio");
+            AudioSource.PlayClipAtPoint(collideClip, Camera.main.transform.position);
+        }
+    }
+
+
     IEnumerator BoomSelf(GameObject obj)
     {
         obj.transform.Find("Image").gameObject.SetActive(false);
         obj.transform.Find("CollideImg").gameObject.SetActive(false);
         obj.transform.Find("BoomImg").gameObject.SetActive(true);
+        PlayMusic("boom");
         yield return new WaitForSeconds(0.1f);
         Destroy(obj);
     }
@@ -76,7 +83,22 @@ public class ColliderItem : MonoBehaviour {
     //根据prefab名字拿audio资源
     public string GetAudioName(string str)
     {
-        Debug.LogError("@@" + str.Substring(0,3));
-        return str.Substring(0,6);
+        //Debug.LogError("@@" + str.Substring(0,6));
+        //return str.Substring(0,6);
+
+        string s = str.Substring(0, 2);
+        Debug.LogError("s" + s);
+        if (s == "KC")
+        {
+            Debug.LogError("KC");
+            return "PS0003";
+        }
+        else if (s == "XK")
+        {
+            Debug.LogError("XK");
+            return "CC0007";
+        }
+        else
+            return "PS0003";
     }
 }

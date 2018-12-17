@@ -149,6 +149,7 @@ public class StartGame : MonoBehaviour
 
     public void OrderModeStartClick()
     {
+        PlayMusic("click");
         GameData.Instance.curStageState = StageState.OrderState;
         int nowDiamonds = PlayerPrefs.GetInt("Diamonds");
         if (nowDiamonds >= 1)
@@ -166,6 +167,7 @@ public class StartGame : MonoBehaviour
 
     public void RandomModeStartClick()
     {
+        PlayMusic("click");
         GameData.Instance.curStageState = StageState.RandomState;
         int nowDiamonds = PlayerPrefs.GetInt("Diamonds");
         if (nowDiamonds >= 3)
@@ -183,6 +185,7 @@ public class StartGame : MonoBehaviour
 
     public void GhostModeStartClick()
     {
+        PlayMusic("click");
         GameData.Instance.curStageState = StageState.GhostState;
         int nowDiamonds = PlayerPrefs.GetInt("Diamonds");
         if (nowDiamonds >= 5)
@@ -199,6 +202,7 @@ public class StartGame : MonoBehaviour
 
     public void SkeletonModeStartClick()
     {
+        PlayMusic("click");
         GameData.Instance.curStageState = StageState.SkeletonState;
         int nowDiamonds = PlayerPrefs.GetInt("Diamonds");
         if (nowDiamonds >= 10)
@@ -214,6 +218,7 @@ public class StartGame : MonoBehaviour
 
     public void OpenCloseShake()
     {
+        PlayMusic("click");
         if (GameData.Instance.isShake)
         {//设为不震动
             GameData.Instance.isShake = false;
@@ -230,6 +235,7 @@ public class StartGame : MonoBehaviour
 
     public void OpenCloseMusic()
     {
+        PlayMusic("click");
         if (GameData.Instance.isMusic)
         {//关闭音乐
             GameData.Instance.isMusic = false;
@@ -319,9 +325,22 @@ public class StartGame : MonoBehaviour
 
     public void RechargeBtnClick()
     {
+        PlayMusic("click");
         ChannelIOSAPI.RequstALLProductInfo();
         theRechargePanel.gameObject.SetActive(true);
         theRechargePanel.gameObject.GetComponent<RechargePanel>().ApplyInfo();
+    }
+
+    public void PlayMusic(string name)
+    {
+        string audioStr = GameDefine.AudioPath + name;
+        Debug.LogError("audioStr: " + audioStr);
+        AudioClip collideClip = Resources.Load(audioStr) as AudioClip;
+        if (collideClip != null)
+        {
+            Debug.LogError("audio");
+            AudioSource.PlayClipAtPoint(collideClip, Camera.main.transform.position);
+        }
     }
 
     public void SetRechargePrice(string info)

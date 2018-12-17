@@ -684,6 +684,7 @@ public class GamePanel : MonoBehaviour {
             {
                 Handheld.Vibrate();
             }
+
             if (GameData.Instance.colliderList[i] != null && 
                 !GameData.Instance.colliderList[i].gameObject.name.Contains("Group")
                 )
@@ -694,6 +695,7 @@ public class GamePanel : MonoBehaviour {
  //               Debug.LogError("##"+ GameData.Instance.colliderList[i].name);
                 GameData.Instance.colliderList[i].transform.Find("CollideImg").gameObject.SetActive(false);
                 GameData.Instance.colliderList[i].transform.Find("BoomImg").gameObject.SetActive(true);
+                PlayMusic("boom");
                 yield return new WaitForSeconds(0.02f);
                 Destroy(GameData.Instance.colliderList[i]);
             }
@@ -702,6 +704,18 @@ public class GamePanel : MonoBehaviour {
         Clear();
     }
 
+
+    public void PlayMusic(string name)
+    {
+        string audioStr = GameDefine.AudioPath + name;
+        Debug.LogError("audioStr: " + audioStr);
+        AudioClip collideClip = Resources.Load(audioStr) as AudioClip;
+        if (collideClip != null)
+        {
+            Debug.LogError("audio");
+            AudioSource.PlayClipAtPoint(collideClip, Camera.main.transform.position);
+        }
+    }
 
     public void StopAllAnimation()
     {

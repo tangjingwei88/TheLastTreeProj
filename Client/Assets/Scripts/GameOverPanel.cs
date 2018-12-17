@@ -10,6 +10,7 @@ public class GameOverPanel : MonoBehaviour {
     public void Apply(float stage)
     {
         GameData.Instance.diamonds = PlayerPrefs.GetInt("Diamonds");
+        GamePanel.Instance.PlayMusic("gameover");
         this.gameObject.SetActive(true);
         if (GameData.Instance.curStageState == StageState.OrderState)
         {
@@ -74,6 +75,7 @@ public class GameOverPanel : MonoBehaviour {
 
     public void OkBtnClick()
     {
+        PlayMusic("click");
         GameData.Instance.passedStageNum = 0;
         this.gameObject.SetActive(false);
         StopAllCoroutines();
@@ -110,9 +112,23 @@ public class GameOverPanel : MonoBehaviour {
 
     public void HomeBtnClick()
     {
+        PlayMusic("click");
         GameData.Instance.passedStageNum = 0;
         this.gameObject.SetActive(false);
         StopAllCoroutines();
         SceneManager.LoadScene("StartScene");
+    }
+
+
+    public void PlayMusic(string name)
+    {
+        string audioStr = GameDefine.AudioPath + name;
+        Debug.LogError("audioStr: " + audioStr);
+        AudioClip collideClip = Resources.Load(audioStr) as AudioClip;
+        if (collideClip != null)
+        {
+            Debug.LogError("audio");
+            AudioSource.PlayClipAtPoint(collideClip, Camera.main.transform.position);
+        }
     }
 }
