@@ -59,12 +59,12 @@ public class ColliderItem : MonoBehaviour {
     public void PlayMusic(string name)
     {
         string audioStr = GameDefine.AudioPath + name;
-        Debug.LogError("audioStr: " + audioStr);
+     //   Debug.LogError("audioStr: " + audioStr);
         AudioClip collideClip = Resources.Load(audioStr) as AudioClip;
         //Debug.LogError("collideClip: " + collideClip.name);
         if (collideClip != null)
         {
-            Debug.LogError("audio");
+    //        Debug.LogError("audio");
             AudioSource.PlayClipAtPoint(collideClip, Camera.main.transform.position);
         }
     }
@@ -87,11 +87,11 @@ public class ColliderItem : MonoBehaviour {
         //return str.Substring(0,6);
 
         string s = str.Substring(0, 2);
-        Debug.LogError("s" + s);
+   //     Debug.LogError("s" + s);
         if (s == "KC")
         {
             Debug.LogError("KC");
-            return "PS0003";
+            return "itemcollide";
         }
         else if (s == "XK")
         {
@@ -99,6 +99,6 @@ public class ColliderItem : MonoBehaviour {
             return "CC0007";
         }
         else
-            return "PS0003";
+            return "itemcollide";
     }
 }
