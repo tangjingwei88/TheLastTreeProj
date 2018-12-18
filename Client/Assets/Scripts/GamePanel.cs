@@ -707,13 +707,16 @@ public class GamePanel : MonoBehaviour {
 
     public void PlayMusic(string name)
     {
-        string audioStr = GameDefine.AudioPath + name;
-        Debug.LogError("audioStr: " + audioStr);
-        AudioClip collideClip = Resources.Load(audioStr) as AudioClip;
-        if (collideClip != null)
+        if (GameData.Instance.isMusic)
         {
-            Debug.LogError("audio");
-            AudioSource.PlayClipAtPoint(collideClip, Camera.main.transform.position);
+            string audioStr = GameDefine.AudioPath + name;
+            Debug.LogError("audioStr: " + audioStr);
+            AudioClip collideClip = Resources.Load(audioStr) as AudioClip;
+            if (collideClip != null)
+            {
+                Debug.LogError("audio");
+                AudioSource.PlayClipAtPoint(collideClip, Camera.main.transform.position);
+            }
         }
     }
 

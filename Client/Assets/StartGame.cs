@@ -75,20 +75,20 @@ public class StartGame : MonoBehaviour
         RefreshModeShow();
         if (GameData.Instance.isShake)
         {
-            ZDCloseSprite.gameObject.SetActive(true);
+            ZDCloseSprite.gameObject.SetActive(false);
         }
         else 
         {
-            ZDCloseSprite.gameObject.SetActive(false);
+            ZDCloseSprite.gameObject.SetActive(true);
         }
 
         if (GameData.Instance.isMusic)
         {
-            MusicCloseSprite.gameObject.SetActive(true);
+            MusicCloseSprite.gameObject.SetActive(false);
         }
         else
         {
-            MusicCloseSprite.gameObject.SetActive(false);
+            MusicCloseSprite.gameObject.SetActive(true);
         }
     }
 
@@ -222,12 +222,12 @@ public class StartGame : MonoBehaviour
         if (GameData.Instance.isShake)
         {//设为不震动
             GameData.Instance.isShake = false;
-            ZDCloseSprite.gameObject.SetActive(false);
+            ZDCloseSprite.gameObject.SetActive(true);
             PlayerPrefs.SetString("Shake", "false");
         }
         else {//设为震动
             GameData.Instance.isShake = true;
-            ZDCloseSprite.gameObject.SetActive(true);
+            ZDCloseSprite.gameObject.SetActive(false);
             PlayerPrefs.SetString("Shake", "true");
         }
     }
@@ -239,13 +239,13 @@ public class StartGame : MonoBehaviour
         if (GameData.Instance.isMusic)
         {//关闭音乐
             GameData.Instance.isMusic = false;
-            MusicCloseSprite.gameObject.SetActive(false);
+            MusicCloseSprite.gameObject.SetActive(true);
             PlayerPrefs.SetString("Music", "false");
         }
         else
         {//开启音乐
             GameData.Instance.isMusic = true;
-            MusicCloseSprite.gameObject.SetActive(true);
+            MusicCloseSprite.gameObject.SetActive(false);
             PlayerPrefs.SetString("Music", "true");
         }
     }
@@ -333,13 +333,16 @@ public class StartGame : MonoBehaviour
 
     public void PlayMusic(string name)
     {
-        string audioStr = GameDefine.AudioPath + name;
-        Debug.LogError("audioStr: " + audioStr);
-        AudioClip collideClip = Resources.Load(audioStr) as AudioClip;
-        if (collideClip != null)
+        if (GameData.Instance.isMusic)
         {
-            Debug.LogError("audio");
-            AudioSource.PlayClipAtPoint(collideClip, Camera.main.transform.position);
+            string audioStr = GameDefine.AudioPath + name;
+            Debug.LogError("audioStr: " + audioStr);
+            AudioClip collideClip = Resources.Load(audioStr) as AudioClip;
+            if (collideClip != null)
+            {
+                Debug.LogError("audio");
+                AudioSource.PlayClipAtPoint(collideClip, Camera.main.transform.position);
+            }
         }
     }
 
