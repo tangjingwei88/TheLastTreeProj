@@ -27,10 +27,7 @@ public class ColliderItem : MonoBehaviour {
             //碰撞有穿透问题，目前引擎没有方法解决，给碰撞体添加相反的力模拟碰撞
             else
             {
-                if (GameData.Instance.isMusic)
-                {
-                    PlayMusic(GetAudioName(transform.gameObject.name));
-                }
+                PlayMusic(GetAudioName(transform.gameObject.name));
                 //根据tag找到气球，获取位置
                 GameObject tree = GameObject.FindGameObjectWithTag("tree");
                 Vector3 treePos = tree.transform.localPosition;
@@ -58,14 +55,14 @@ public class ColliderItem : MonoBehaviour {
 
     public void PlayMusic(string name)
     {
-        string audioStr = GameDefine.AudioPath + name;
-     //   Debug.LogError("audioStr: " + audioStr);
-        AudioClip collideClip = Resources.Load(audioStr) as AudioClip;
-        //Debug.LogError("collideClip: " + collideClip.name);
-        if (collideClip != null)
+        if (GameData.Instance.isMusic)
         {
-    //        Debug.LogError("audio");
-            AudioSource.PlayClipAtPoint(collideClip, Camera.main.transform.position);
+            string audioStr = GameDefine.AudioPath + name;
+            AudioClip collideClip = Resources.Load(audioStr) as AudioClip;
+            if (collideClip != null)
+            {
+                AudioSource.PlayClipAtPoint(collideClip, Camera.main.transform.position);
+            }
         }
     }
 

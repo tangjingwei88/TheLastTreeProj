@@ -14,6 +14,13 @@ public class RechargePanel : MonoBehaviour
     public Text price05Text;
     public Text price06Text;
 
+    public Image loadingImg1;
+    public Image loadingImg2;
+    public Image loadingImg3;
+    public Image loadingImg4;
+    public Image loadingImg5;
+    public Image loadingImg6;
+
     void Awake()
     {
         ApplyInfo();
@@ -22,11 +29,12 @@ public class RechargePanel : MonoBehaviour
     public void ApplyInfo()
     {
         string[] priceList = GameData.Instance.allPirceStr.Split(';');
-        Debug.LogError("@@priceList.Length: " + priceList.Length);
+ //       Debug.LogError("@@priceList.Length: " + priceList.Length);
+
         //如果从appstore上没有拿到所有的商品价格信息，就直接隐藏价格显示
         if (priceList.Length-1 < 6)
         {
-            //HidePriceText(true);
+            HidePriceText(true);
 #if UNITY_IOS
             ChannelIOSAPI.RequstALLProductInfo();
 #endif
@@ -85,6 +93,9 @@ public class RechargePanel : MonoBehaviour
 
     public void HidePriceText(bool hide)
     {
+#if UNITY_IOS
+            ChannelIOSAPI.RequstALLProductInfo();
+#endif
         if (hide)
         {
             price01Text.gameObject.SetActive(false);
@@ -93,6 +104,13 @@ public class RechargePanel : MonoBehaviour
             price04Text.gameObject.SetActive(false);
             price05Text.gameObject.SetActive(false);
             price06Text.gameObject.SetActive(false);
+
+            loadingImg1.gameObject.SetActive(true);
+            loadingImg2.gameObject.SetActive(true);
+            loadingImg3.gameObject.SetActive(true);
+            loadingImg4.gameObject.SetActive(true);
+            loadingImg5.gameObject.SetActive(true);
+            loadingImg6.gameObject.SetActive(true);
         }
         else {
             price01Text.gameObject.SetActive(true);
@@ -101,6 +119,13 @@ public class RechargePanel : MonoBehaviour
             price04Text.gameObject.SetActive(true);
             price05Text.gameObject.SetActive(true);
             price06Text.gameObject.SetActive(true);
+
+            loadingImg1.gameObject.SetActive(false);
+            loadingImg2.gameObject.SetActive(false);
+            loadingImg3.gameObject.SetActive(false);
+            loadingImg4.gameObject.SetActive(false);
+            loadingImg5.gameObject.SetActive(false);
+            loadingImg6.gameObject.SetActive(false);
         }
     }
 
