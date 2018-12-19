@@ -7,10 +7,8 @@ public class RechargeItem : MonoBehaviour {
     public void RechargeItem6Click()
     {
         PlayMusic("click");
-        //Debug.LogError("RechargeItem6Click");
-        //IOSIAPMgr.BuyProductById("tsoft_y_6");
 #if UNITY_EDITOR || UNITY_ANDROID
-      IOSIAPMgr.Instance.AddPurchaseDiamonds(59);
+      IOSIAPMgr.Instance.AddPurchaseDiamonds(99);
 #else
         ChannelIOSAPI.BuyProductById(1001);
 #endif
@@ -19,10 +17,8 @@ public class RechargeItem : MonoBehaviour {
     public void RechargeItem12Click()
     {
         PlayMusic("click");
-        //Debug.LogError("RechargeItem12Click");
-        //IOSIAPMgr.BuyProductById("tsoft_y_6");
 #if UNITY_EDITOR || UNITY_ANDROID
-        IOSIAPMgr.Instance.AddPurchaseDiamonds(149);
+        IOSIAPMgr.Instance.AddPurchaseDiamonds(249);
 #else
         ChannelIOSAPI.BuyProductById(1002);
 #endif
@@ -31,10 +27,8 @@ public class RechargeItem : MonoBehaviour {
     public void RechargeItem24Click()
     {
         PlayMusic("click");
-        //Debug.LogError("RechargeItem24Click");
-        //IOSIAPMgr.BuyProductById("tsoft_y_6");
 #if UNITY_EDITOR || UNITY_ANDROID
-        IOSIAPMgr.Instance.AddPurchaseDiamonds(399);
+        IOSIAPMgr.Instance.AddPurchaseDiamonds(449);
 #else
         ChannelIOSAPI.BuyProductById(1003);
 #endif
@@ -43,8 +37,6 @@ public class RechargeItem : MonoBehaviour {
     public void RechargeItem49Click()
     {
         PlayMusic("click");
-        //Debug.LogError("RechargeItem49Click");
-        //IOSIAPMgr.BuyProductById("tsoft_y_6");
 #if UNITY_EDITOR || UNITY_ANDROID
         IOSIAPMgr.Instance.AddPurchaseDiamonds(999);
 #else
@@ -55,8 +47,6 @@ public class RechargeItem : MonoBehaviour {
     public void RechargeItem99Click()
     {
         PlayMusic("click");
-        //Debug.LogError("RechargeItem99Click");
-        //IOSIAPMgr.BuyProductById("tsoft_y_6");
 #if UNITY_EDITOR || UNITY_ANDROID
         IOSIAPMgr.Instance.AddPurchaseDiamonds(1999);
 #else
@@ -67,8 +57,6 @@ public class RechargeItem : MonoBehaviour {
     public void RechargeItem168Click()
     {
         PlayMusic("click");
-        //Debug.LogError("RechargeItem168Click");
-        //IOSIAPMgr.BuyProductById("tsoft_y_6");
 #if UNITY_EDITOR || UNITY_ANDROID
         IOSIAPMgr.Instance.AddPurchaseDiamonds(4999);
 #else

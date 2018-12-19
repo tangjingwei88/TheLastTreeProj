@@ -29,15 +29,15 @@ public class ChannelIOSReceiver : MonoBehaviour {
         Debug.LogError("@@BuyProcuctSucessCallBack : " + str);
         if (str == "tsoft_protecter_1001")
         {
-            AddPurchaseDiamonds(59);
+            AddPurchaseDiamonds(99);
         }
         else if (str == "tsoft_protecter_1002")
         {
-            AddPurchaseDiamonds(149);
+            AddPurchaseDiamonds(249);
         }
         else if (str == "tsoft_protecter_1003")
         {
-            AddPurchaseDiamonds(399);
+            AddPurchaseDiamonds(449);
         }
         else if (str == "tsoft_protecter_1004")
         {

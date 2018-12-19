@@ -58,8 +58,8 @@ public class GameOverPanel : MonoBehaviour {
             int diam = (GameData.Instance.passedStageNum - 1) / 1;
             if (diam >= 1)
             {
-                GameData.Instance.diamonds += diam * 20;
-                diamText.text = "+ " + diam * 20;
+                GameData.Instance.diamonds += diam * 30;
+                diamText.text = "+ " + diam * 30;
             }
             else
             {
