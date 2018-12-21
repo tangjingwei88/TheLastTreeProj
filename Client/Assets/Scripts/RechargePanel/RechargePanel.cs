@@ -40,17 +40,18 @@ public class RechargePanel : MonoBehaviour
 #endif
         }
         else {
-            //HidePriceText(false);
-        }
-
-        for (int i = 0; i < priceList.Length; i++)
-        {
-            if (priceList[i] != null)
+            HidePriceText(false);
+            for (int i = 0; i < priceList.Length; i++)
             {
-                //Debug.LogError("@@pirceList[i]: " + priceList[i]);
-                ApplyPriceInfo(priceList[i]);
+                if (priceList[i] != null)
+                {
+                    //Debug.LogError("@@pirceList[i]: " + priceList[i]);
+                    ApplyPriceInfo(priceList[i]);
+                }
             }
         }
+
+
     }
 
     public void ApplyPriceInfo(string info)
