@@ -80,7 +80,7 @@ public class ColliderItem : MonoBehaviour {
     //根据prefab名字拿audio资源
     public string GetAudioName(string str)
     {
-        Debug.LogError("str" + str);
+       // Debug.LogError("str" + str);
         if (str.Contains("CarTemplate"))
         {
             return "CarTemplate";

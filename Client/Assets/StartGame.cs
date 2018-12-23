@@ -336,11 +336,11 @@ public class StartGame : MonoBehaviour
         if (GameData.Instance.isMusic)
         {
             string audioStr = GameDefine.AudioPath + name;
-            Debug.LogError("audioStr: " + audioStr);
+           // Debug.LogError("audioStr: " + audioStr);
             AudioClip collideClip = Resources.Load(audioStr) as AudioClip;
             if (collideClip != null)
             {
-                Debug.LogError("audio");
+              //  Debug.LogError("audio");
                 AudioSource.PlayClipAtPoint(collideClip, Camera.main.transform.position);
             }
         }
@@ -348,7 +348,7 @@ public class StartGame : MonoBehaviour
 
     public void SetRechargePrice(string info)
     {
-        Debug.LogError("@@#:" + theRechargePanel.gameObject.name);
+       // Debug.LogError("@@#:" + theRechargePanel.gameObject.name);
         theRechargePanel.gameObject.GetComponent<RechargePanel>().ApplyInfo();
     }
 
