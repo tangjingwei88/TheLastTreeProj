@@ -588,6 +588,7 @@ public class GamePanel : MonoBehaviour {
             item.transform.localPosition = new Vector3(protectBtn.GetComponent<RectTransform>().localPosition.x, protectBtn.GetComponent<RectTransform>().localPosition.y - 200, 0);
             item.transform.localScale = Vector3.one;
         }
+        tree = (GameObject)obj;
     }
 
     //生成太极随从
@@ -596,22 +597,27 @@ public class GamePanel : MonoBehaviour {
         if (GameData.Instance.curStageState == StageState.OrderState)
         {
             protectBtn.SetActive(true);
-            protectBtn.SetActive(false);
+            protectBtn2.SetActive(false);
         }
         else if (GameData.Instance.curStageState == StageState.RandomState)
         {
             protectBtn.SetActive(true);
-            protectBtn.SetActive(false);
+            protectBtn2.SetActive(false);
         }
         else if (GameData.Instance.curStageState == StageState.GhostState)
         {
             protectBtn.SetActive(true);
-            protectBtn.SetActive(true);
+            protectBtn2.SetActive(true);
+            protectBtn.transform.localPosition = new Vector3(tree.transform.localPosition.x, tree.transform.localPosition.y + 100, tree.transform.localPosition.z);
+            protectBtn2.transform.localPosition = new Vector3(tree.transform.localPosition.x, tree.transform.localPosition.y - 100, tree.transform.localPosition.z);
         }
         else if (GameData.Instance.curStageState == StageState.SkeletonState)
         {
             protectBtn.SetActive(true);
-            protectBtn.SetActive(true);
+            protectBtn2.SetActive(true);
+            protectBtn.transform.localPosition = new Vector3(tree.transform.localPosition.x, tree.transform.localPosition.y + 100, tree.transform.localPosition.z);
+            protectBtn2.transform.localPosition = new Vector3(tree.transform.localPosition.x, tree.transform.localPosition.y - 100, tree.transform.localPosition.z);
+
         }
     }
 
