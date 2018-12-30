@@ -51,6 +51,11 @@ public class ChannelIOSReceiver : MonoBehaviour {
         {
             AddPurchaseDiamonds(4999);
         }
+        else if (str == "tsoft_protecter_2001")
+        {
+            GameData.Instance.isSkeletonOpen = true;
+            PlayerPrefs.SetString("isSkeletonOpen","true");
+        }
 
     }
     /// <summary>

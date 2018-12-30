@@ -639,7 +639,7 @@ public class GamePanel : MonoBehaviour {
         item.transform.localScale = Vector3.one;
     }
 
-
+    //每种模式需通过的关卡
     public int GetRewardStage()
     {
         switch(GameData.Instance.curStageState)

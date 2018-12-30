@@ -47,7 +47,7 @@ public class StartGame : MonoBehaviour
 #endif
         if (PlayerPrefs.GetString("NewPlayer") != "false")
         {
-            PlayerPrefs.SetInt("Diamonds", 20);
+            PlayerPrefs.SetInt("Diamonds", 29);
             PlayerPrefs.SetString("NewPlayer", "false");
 
             GameData.Instance.diamonds = PlayerPrefs.GetInt("Diamonds");
@@ -73,22 +73,26 @@ public class StartGame : MonoBehaviour
     {
         //ReadText();
         RefreshModeShow();
-        if (GameData.Instance.isShake)
+        if (PlayerPrefs.GetString("Shake") == "true")
         {
             ZDCloseSprite.gameObject.SetActive(false);
+            GameData.Instance.isShake = true;
         }
         else 
         {
             ZDCloseSprite.gameObject.SetActive(true);
+            GameData.Instance.isShake = false;
         }
 
-        if (GameData.Instance.isMusic)
+        if (PlayerPrefs.GetString("Music") == "true")
         {
             MusicCloseSprite.gameObject.SetActive(false);
+            GameData.Instance.isMusic = true;
         }
         else
         {
             MusicCloseSprite.gameObject.SetActive(true);
+            GameData.Instance.isMusic = false;
         }
     }
 
@@ -203,17 +207,19 @@ public class StartGame : MonoBehaviour
     public void SkeletonModeStartClick()
     {
         PlayMusic("click");
-        GameData.Instance.curStageState = StageState.SkeletonState;
-        int nowDiamonds = PlayerPrefs.GetInt("Diamonds");
-        if (nowDiamonds >= 10)
-        {
-            StartLoadMainScenes();
-        }
-        else
-        {
-            theTipsPanel.SetActive(true);
-            theTipsPanel.GetComponent<TipsPanel>().Apply(nowDiamonds, 10);
-        }
+    
+            GameData.Instance.curStageState = StageState.SkeletonState;
+            int nowDiamonds = PlayerPrefs.GetInt("Diamonds");
+            if (nowDiamonds >= 10)
+            {
+                StartLoadMainScenes();
+            }
+            else
+            {
+                theTipsPanel.SetActive(true);
+                theTipsPanel.GetComponent<TipsPanel>().Apply(nowDiamonds, 10);
+            }
+
     }
 
     public void OpenCloseShake()

@@ -7,6 +7,7 @@ public class GameData : MonoBehaviour {
     public bool isLost = false;
     public bool isShake = true;
     public bool isMusic = true;
+    public bool isSkeletonOpen = false;
 
     public float protectPower = 0;
     public float protectRotateSpeed = 0;
@@ -31,10 +32,6 @@ public class GameData : MonoBehaviour {
             return instance;
         }
     }
-
-
-
-
 }
 
 
