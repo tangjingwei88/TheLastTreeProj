@@ -69,6 +69,13 @@ public class GamePanel : MonoBehaviour {
     public GameObject stageLabelPos; //关卡名称生成位置
     private GameObject LabelObj;
 
+    public Image bgImg;
+    public Image leftBorderImg;
+    public Image rightBorderImg;
+    public Image bottomBorderImg;
+    public Image topLeftBorderImg;
+    public Image topRightBorderImg;
+
     #endregion
 
     #region 变量
@@ -162,12 +169,14 @@ public class GamePanel : MonoBehaviour {
                 //Ghost
                 int stageRandom = Random.Range(18, 35);
                 cf = StageConfigManager.GetStageConfig(stageRandom);
+                bgImg.sprite = Resources.Load("UIAtlas/common/bg_02",typeof(Sprite)) as Sprite;
             }
             else if (GameData.Instance.curStageState == StageState.SkeletonState)
             {
                 //Skeleton
                 int stageRandom = Random.Range(28, StageConfigManager.stageConfigList.Count);
                 cf = StageConfigManager.GetStageConfig(stageRandom);
+                bgImg.sprite = Resources.Load("UIAtlas/common/bg_02", typeof(Sprite)) as Sprite;
             }
             else {
                 cf = StageConfigManager.GetStageConfig(stage);
